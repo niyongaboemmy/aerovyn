@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Orbitron, DM_Sans } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { MobileBottomNav } from '@/components/layout/MobileBottomNav'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
 import { CustomCursor } from '@/components/ui/CustomCursor'
 import { PageTransition } from '@/components/ui/PageTransition'
@@ -22,6 +23,12 @@ const dmSans = DM_Sans({
   display: 'swap',
   weight: ['300', '400', '500'],
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover', // enables env(safe-area-inset-*) on notched iOS devices
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://aerovyn.com'),
@@ -88,6 +95,7 @@ export default function RootLayout({
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
+          <MobileBottomNav />
         </SmoothScrollProvider>
       </body>
     </html>

@@ -29,16 +29,16 @@ function StatItem({ target, suffix, label }: { target: number; suffix: string; l
 
 export function StatsStrip() {
   return (
-    <section className="px-6 py-6">
+    <section className="px-4 py-4 sm:px-6 sm:py-6">
       <div
-        className="mx-auto max-w-7xl rounded-2xl px-8 py-10"
+        className="mx-auto max-w-7xl rounded-2xl px-4 py-6 sm:px-8 sm:py-10"
         style={{
           background: 'rgba(255,255,255,0.03)',
           border: '1px solid rgba(0,245,196,0.15)',
           backdropFilter: 'blur(12px)',
         }}
       >
-        <div className="grid grid-cols-2 gap-10 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 sm:gap-10 lg:grid-cols-4">
           {stats.map((s) => (
             <StatItem key={s.label} {...s} />
           ))}

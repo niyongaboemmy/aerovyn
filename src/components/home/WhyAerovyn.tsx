@@ -79,7 +79,7 @@ export function WhyAerovyn() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="px-6 py-24">
+    <section ref={sectionRef} className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-16 text-center">
@@ -115,7 +115,10 @@ export function WhyAerovyn() {
 
           <div className="flex flex-col gap-12">
             {values.map(({ icon: Icon, title, desc }, i) => (
-              <div key={title} className="why-item flex items-start gap-8 lg:ml-0">
+              <div
+                key={title}
+                className="why-item flex items-start gap-5 border-l-2 border-[rgba(0,245,196,0.2)] pl-5 lg:gap-8 lg:border-none lg:pl-0"
+              >
                 {/* Node dot + icon */}
                 <div className="why-node relative shrink-0">
                   <div

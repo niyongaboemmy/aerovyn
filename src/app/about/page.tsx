@@ -61,19 +61,19 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <div className="grid-bg pt-28 pb-20 px-6">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="grid-bg px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-24 md:pb-20 md:pt-28">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
               Our Story
             </p>
-            <h1 className="text-5xl font-black tracking-widest text-white md:text-7xl mb-6" style={{ fontFamily: 'var(--font-orbitron)' }}>
+            <h1 className="mb-6 text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
               ABOUT
             </h1>
-            <p className="text-lg text-[#6B7A8D] leading-relaxed max-w-lg">
+            <p className="max-w-lg text-base leading-relaxed text-[#6B7A8D] sm:text-lg">
               AEROVYN was built to answer a simple question: what happens when professional-grade drone capability meets Africa&apos;s most demanding operational environments?
             </p>
-            <p className="mt-4 text-base text-[#6B7A8D] leading-relaxed max-w-lg">
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-[#6B7A8D]">
               We started in Kigali in 2020 with two drones and a conviction that precision aerial data could transform how infrastructure, agriculture, and media projects are delivered across the continent.
             </p>
           </div>
@@ -90,17 +90,17 @@ export default function AboutPage() {
       </div>
 
       {/* Mission + values */}
-      <section className="px-6 py-20" style={{ background: 'var(--bg-surface)' }}>
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             What Drives Us
           </p>
-          <h2 className="text-3xl font-black text-white mb-12 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
             OUR VALUES
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {values.map(({ title, desc }, i) => (
-              <div key={title} className="rounded-2xl p-6" style={{ background: 'var(--bg-elevated)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div key={title} className="rounded-2xl p-5 md:p-6" style={{ background: 'var(--bg-elevated)', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <p className="text-xs font-bold text-[#00F5C4] mb-3 opacity-60" style={{ fontFamily: 'var(--font-orbitron)' }}>0{i + 1}</p>
                 <h3 className="text-sm font-bold text-white mb-3" style={{ fontFamily: 'var(--font-orbitron)' }}>{title}</h3>
                 <p className="text-sm text-[#6B7A8D] leading-relaxed">{desc}</p>
@@ -111,17 +111,17 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="px-6 py-20">
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             The People
           </p>
-          <h2 className="text-3xl font-black text-white mb-12 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
             MEET THE TEAM
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {team.map(({ initials, name, role, bio, accent }) => (
-              <div key={name} className="group rounded-2xl p-7 flex flex-col transition-[border-color] duration-300" style={{ background: 'var(--bg-elevated)', border: `1px solid ${accent}20` }}
+              <div key={name} className="group flex flex-col rounded-2xl p-5 transition-[border-color] duration-300 md:p-7" style={{ background: 'var(--bg-elevated)', border: `1px solid ${accent}20` }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = `${accent}50` }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = `${accent}20` }}
               >
@@ -138,17 +138,17 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="px-6 py-20" style={{ background: 'var(--bg-surface)' }}>
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Milestones
           </p>
-          <h2 className="text-3xl font-black text-white mb-14 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-12 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-14" style={{ fontFamily: 'var(--font-orbitron)' }}>
             OUR JOURNEY
           </h2>
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-[31px] top-0 bottom-0 w-px hidden sm:block" style={{ background: 'linear-gradient(to bottom, rgba(0,245,196,0.4), rgba(0,245,196,0.05))' }} />
+            {/* Vertical line — only show when circle icons align (sm+) */}
+            <div className="absolute bottom-0 top-0 w-px hidden sm:block" style={{ left: '31px', background: 'linear-gradient(to bottom, rgba(0,245,196,0.4), rgba(0,245,196,0.05))' }} />
             <div className="space-y-8">
               {timeline.map(({ year, event }) => (
                 <div key={year} className="flex gap-6 items-start">
@@ -168,16 +168,16 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-20">
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl text-center">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>Join Us</p>
-          <h2 className="text-3xl font-black text-white mb-4 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>FLY WITH AEROVYN</h2>
-          <p className="text-[#6B7A8D] mb-8 max-w-md mx-auto">Whether you need a mission flown or a career launched — we&apos;re here.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/services" className="inline-block rounded-md bg-[#00F5C4] px-8 py-3.5 text-sm font-semibold text-[#0A0B0D] transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,196,0.4)] hover:scale-[1.02]" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-4 text-2xl font-black tracking-wide text-white sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>FLY WITH AEROVYN</h2>
+          <p className="mx-auto mb-8 max-w-md text-sm text-[#6B7A8D] sm:text-base">Whether you need a mission flown or a career launched — we&apos;re here.</p>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/services" className="w-full rounded-md bg-[#00F5C4] px-8 py-3.5 text-sm font-semibold text-[#0A0B0D] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,245,196,0.4)] sm:w-auto" style={{ fontFamily: 'var(--font-orbitron)' }}>
               Our Services →
             </Link>
-            <Link href="/training" className="inline-block rounded-md border border-[rgba(255,255,255,0.2)] px-8 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:border-[rgba(0,245,196,0.5)] hover:text-[#00F5C4]">
+            <Link href="/training" className="w-full rounded-md border border-[rgba(255,255,255,0.2)] px-8 py-3.5 text-center text-sm font-medium text-white transition-all duration-300 hover:border-[rgba(0,245,196,0.5)] hover:text-[#00F5C4] sm:w-auto">
               Training Programmes
             </Link>
           </div>

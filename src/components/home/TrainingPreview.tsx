@@ -72,7 +72,7 @@ export function TrainingPreview() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="px-6 py-24" style={{ background: 'var(--bg-surface)' }}>
+    <section ref={sectionRef} className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24" style={{ background: 'var(--bg-surface)' }}>
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-14 text-center">
@@ -98,7 +98,7 @@ export function TrainingPreview() {
           {courses.map((course) => (
             <div
               key={course.level}
-              className="course-card flex flex-col rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1"
+              className="course-card flex flex-col rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-1 md:p-7"
               style={{
                 background: 'rgba(255,255,255,0.03)',
                 border: `1px solid ${course.levelColor}25`,

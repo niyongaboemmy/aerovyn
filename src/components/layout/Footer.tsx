@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Twitter, Instagram, Linkedin, Youtube } from 'lucide-react'
+import { Globe, Rss, Video, Youtube } from 'lucide-react'
 
 const services = [
   { label: 'Aerial Mapping', href: '/services/drone-projects' },
@@ -18,10 +18,10 @@ const training = [
 ]
 
 const socialLinks = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Globe,   href: '#', label: 'LinkedIn'  },
+  { icon: Rss,     href: '#', label: 'Blog feed' },
+  { icon: Video,   href: '#', label: 'YouTube'   },
+  { icon: Youtube, href: '#', label: 'Subscribe' },
 ]
 
 export function Footer() {
@@ -33,8 +33,8 @@ export function Footer() {
         borderColor: 'rgba(0, 245, 196, 0.2)',
       }}
     >
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-4 pb-mobile-nav pt-12 sm:px-6 sm:pt-16 md:pb-16">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-4">
 
           {/* Col 1 — Brand */}
           <div className="flex flex-col gap-5">

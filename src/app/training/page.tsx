@@ -179,23 +179,23 @@ export default function TrainingPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <div className="grid-bg pt-28 pb-20 px-6">
+      <div className="grid-bg px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-24 md:pb-20 md:pt-28">
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Training Programs
           </p>
-          <h1 className="text-5xl font-black tracking-widest text-white md:text-7xl mb-6" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h1 className="mb-6 text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
             TRAINING
           </h1>
-          <p className="text-lg text-[#6B7A8D] max-w-2xl leading-relaxed">
+          <p className="max-w-2xl text-base leading-relaxed text-[#6B7A8D] sm:text-lg">
             From zero experience to RCAA Remote Pilot Licence — structured programmes taught by working professionals on real commercial equipment.
           </p>
         </div>
       </div>
 
       {/* Certifications strip */}
-      <div className="px-6 py-10" style={{ background: 'var(--bg-surface)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-        <div className="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="px-4 py-8 sm:px-6 sm:py-10" style={{ background: 'var(--bg-surface)', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="mx-auto max-w-7xl grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-6">
           {certifications.map(({ icon: Icon, label, desc }) => (
             <div key={label} className="flex items-start gap-3">
               <div className="shrink-0 w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: 'rgba(0,245,196,0.08)', border: '1px solid rgba(0,245,196,0.2)' }}>
@@ -211,12 +211,12 @@ export default function TrainingPage() {
       </div>
 
       {/* Course accordion */}
-      <section className="px-6 py-20">
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Curriculum
           </p>
-          <h2 className="text-3xl font-black text-white mb-12 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
             COURSE CATALOGUE
           </h2>
           <div className="space-y-4">
@@ -228,17 +228,17 @@ export default function TrainingPage() {
       </section>
 
       {/* Instructors */}
-      <section className="px-6 py-20" style={{ background: 'var(--bg-surface)' }}>
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Who Teaches
           </p>
-          <h2 className="text-3xl font-black text-white mb-12 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
             INSTRUCTORS
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
             {instructors.map(({ initials, name, role, exp, accent }) => (
-              <div key={name} className="rounded-2xl p-7 flex flex-col items-center text-center" style={{ background: 'var(--bg-elevated)', border: `1px solid ${accent}20` }}>
+              <div key={name} className="flex flex-col items-center rounded-2xl p-5 text-center md:p-7" style={{ background: 'var(--bg-elevated)', border: `1px solid ${accent}20` }}>
                 <div className="w-16 h-16 rounded-full flex items-center justify-center text-lg font-black mb-4" style={{ background: `${accent}20`, color: accent, fontFamily: 'var(--font-orbitron)' }}>
                   {initials}
                 </div>
@@ -252,19 +252,19 @@ export default function TrainingPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-6">
-        <div className="mx-auto max-w-7xl rounded-2xl px-10 py-16 text-center" style={{ background: 'linear-gradient(135deg, #00f5c4 0%, #00b8a9 50%, #007a6e 100%)' }}>
-          <h2 className="text-3xl font-black text-[#0A0B0D] mb-3 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+      <section className="px-4 py-4 sm:px-6 sm:py-6">
+        <div className="mx-auto max-w-7xl rounded-2xl px-5 py-10 text-center sm:px-10 sm:py-14 md:py-16" style={{ background: 'linear-gradient(135deg, #00f5c4 0%, #00b8a9 50%, #007a6e 100%)' }}>
+          <h2 className="mb-3 text-2xl font-black tracking-wide text-[#0A0B0D] sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
             START YOUR JOURNEY TODAY
           </h2>
-          <p className="text-[#0A0B0D] opacity-70 mb-8 max-w-md mx-auto">
+          <p className="mx-auto mb-8 max-w-md text-sm text-[#0A0B0D] opacity-70 sm:text-base">
             Next cohort intake is open. Secure your spot before it fills.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact" className="rounded-xl bg-[#0A0B0D] px-8 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#111318]" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href="/contact" className="w-full rounded-xl bg-[#0A0B0D] px-8 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-[#111318] sm:w-auto" style={{ fontFamily: 'var(--font-orbitron)' }}>
               Enroll Now →
             </Link>
-            <Link href="/contact" className="rounded-xl border-2 border-[rgba(10,11,13,0.3)] px-8 py-3.5 text-sm font-semibold text-[#0A0B0D] transition-all duration-300 hover:border-[#0A0B0D]">
+            <Link href="/contact" className="w-full rounded-xl border-2 border-[rgba(10,11,13,0.3)] px-8 py-3.5 text-sm font-semibold text-[#0A0B0D] transition-all duration-300 hover:border-[#0A0B0D] sm:w-auto">
               Request Group Booking
             </Link>
           </div>

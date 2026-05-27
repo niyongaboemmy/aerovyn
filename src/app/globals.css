@@ -345,3 +345,26 @@ body {
 .nav-link:hover::after {
   width: 100%;
 }
+
+/* ─── Safe-area + mobile utilities ──────────────────────────────────────── */
+:root {
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --mobile-nav-h: 64px;
+}
+
+/* Remove tap highlight on all interactive elements */
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Utility: bottom clearance for mobile nav bar + device safe area */
+.pb-mobile-nav {
+  padding-bottom: calc(var(--mobile-nav-h) + var(--safe-bottom) + 1rem);
+}
+
+/* Mobile bottom nav slide-up entrance */
+@keyframes nav-slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}

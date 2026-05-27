@@ -92,34 +92,34 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <div className="grid-bg pt-28 pb-20 px-6">
+      <div className="grid-bg px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-24 md:pb-20 md:pt-28">
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             What We Offer
           </p>
-          <h1 className="text-5xl font-black tracking-widest text-white md:text-7xl mb-6" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h1 className="mb-6 text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
             SERVICES
           </h1>
-          <p className="text-lg text-[#6B7A8D] max-w-2xl leading-relaxed">
+          <p className="max-w-2xl text-base leading-relaxed text-[#6B7A8D] sm:text-lg">
             From centimetre-accurate survey data to broadcast-quality aerial cinema — AEROVYN deploys the right platform, crew, and workflow for every mission.
           </p>
         </div>
       </div>
 
       {/* Service categories */}
-      <section className="px-6 py-20" style={{ background: 'var(--bg-surface)' }}>
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Capabilities
           </p>
-          <h2 className="text-3xl font-black text-white mb-12 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
             WHAT WE FLY
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map(({ icon: Icon, title, accent, summary, features }) => (
               <div
                 key={title}
-                className="group rounded-2xl p-7 flex flex-col transition-[border-color,box-shadow] duration-300 hover:shadow-[0_0_40px_rgba(0,0,0,0.4)]"
+                className="group flex flex-col rounded-2xl p-5 transition-[border-color,box-shadow] duration-300 hover:shadow-[0_0_40px_rgba(0,0,0,0.4)] md:p-7"
                 style={{ background: 'var(--bg-elevated)', border: `1px solid ${accent}20` }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = `${accent}50` }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = `${accent}20` }}
@@ -144,18 +144,18 @@ export default function ServicesPage() {
       </section>
 
       {/* Process timeline */}
-      <section className="px-6 py-20">
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             How It Works
           </p>
-          <h2 className="text-3xl font-black text-white mb-14 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-12 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-14" style={{ fontFamily: 'var(--font-orbitron)' }}>
             THE PROCESS
           </h2>
           <div className="relative">
             {/* Connecting line */}
-            <div className="absolute top-6 left-6 right-6 h-px hidden lg:block" style={{ background: 'linear-gradient(to right, rgba(0,245,196,0.4), rgba(0,245,196,0.1))' }} />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+            <div className="absolute left-6 right-6 top-6 hidden h-px lg:block" style={{ background: 'linear-gradient(to right, rgba(0,245,196,0.4), rgba(0,245,196,0.1))' }} />
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
               {process.map(({ step, title, desc }) => (
                 <div key={step} className="relative flex flex-col">
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border-2 bg-[#0a0b0d]" style={{ borderColor: 'rgba(0,245,196,0.5)' }}>
@@ -171,12 +171,12 @@ export default function ServicesPage() {
       </section>
 
       {/* Equipment */}
-      <section className="px-6 py-20" style={{ background: 'var(--bg-surface)' }}>
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Fleet
           </p>
-          <h2 className="text-3xl font-black text-white mb-12 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
             OUR EQUIPMENT
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -198,20 +198,20 @@ export default function ServicesPage() {
       </section>
 
       {/* Pricing */}
-      <section className="px-6 py-20">
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Investment
           </p>
-          <h2 className="text-3xl font-black text-white mb-4 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-3 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-4" style={{ fontFamily: 'var(--font-orbitron)' }}>
             PRICING
           </h2>
-          <p className="text-[#6B7A8D] mb-12 max-w-xl">Every project is scoped individually. These tiers give a starting point — contact us for an accurate quote.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <p className="mb-10 max-w-xl text-sm text-[#6B7A8D] sm:text-base sm:mb-12">Every project is scoped individually. These tiers give a starting point — contact us for an accurate quote.</p>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {pricing.map(({ tier, desc, price, accent, featured, items }) => (
               <div
                 key={tier}
-                className="rounded-2xl p-8 flex flex-col"
+                className="flex flex-col rounded-2xl p-5 sm:p-7 md:p-8"
                 style={{
                   background: featured ? `${accent}08` : 'var(--bg-elevated)',
                   border: `${featured ? '2px' : '1px'} solid ${featured ? `${accent}50` : `${accent}20`}`,
@@ -250,8 +250,8 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-6">
-        <div className="mx-auto max-w-7xl rounded-2xl px-10 py-16 text-center" style={{ background: 'linear-gradient(135deg, rgba(0,245,196,0.08), rgba(0,245,196,0.02))', border: '1px solid rgba(0,245,196,0.2)' }}>
+      <section className="px-4 py-4 sm:px-6 sm:py-6">
+        <div className="mx-auto max-w-7xl rounded-2xl px-5 py-10 text-center sm:px-10 sm:py-14 md:py-16" style={{ background: 'linear-gradient(135deg, rgba(0,245,196,0.08), rgba(0,245,196,0.02))', border: '1px solid rgba(0,245,196,0.2)' }}>
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>Ready to Start</p>
           <h2 className="text-3xl font-black text-white mb-4 tracking-wide" style={{ fontFamily: 'var(--font-orbitron)' }}>PLAN YOUR MISSION</h2>
           <p className="text-[#6B7A8D] mb-8 max-w-md mx-auto">Tell us your requirements and we&apos;ll respond with a quote and timeline within one business day.</p>

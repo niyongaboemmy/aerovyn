@@ -28,8 +28,8 @@ type Star = {
   drift: boolean; driftDur: number; driftDelay: number
 }
 
-function makeStarField(): Star[] {
-  return Array.from({ length: 260 }, (_, i) => {
+function makeStarField(count = 260): Star[] {
+  return Array.from({ length: count }, (_, i) => {
     const r = Math.random()
     return {
       id: i,
@@ -1007,10 +1007,26 @@ function DroneCameraPanel({ onOpen }: { onOpen: () => void }) {
 export function Hero() {
   const sectionRef     = useRef<HTMLElement>(null)
   const earthTextureRef = useRef<HTMLDivElement>(null)
-  const [stars, setStars] = useState<Star[]>([])
+  const [stars, setStars]   = useState<Star[]>([])
   const [simOpen, setSimOpen] = useState(false)
   const [audioOn, setAudioOn] = useState(false)
-  useEffect(() => { setStars(makeStarField()) }, [])
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Stars count + mobile flag — both driven from one resize listener
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth
+      setIsMobile(w < 768)
+      setStars((prev) => {
+        const wanted = w < 640 ? 80 : 260
+        if (prev.length !== wanted) return makeStarField(wanted)
+        return prev
+      })
+    }
+    update()
+    window.addEventListener('resize', update, { passive: true })
+    return () => window.removeEventListener('resize', update)
+  }, [])
   useAirspaceAudio(audioOn)
 
   // Earth auto-rotation + mouse influence
@@ -1056,7 +1072,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="space-bg grid-bg relative flex min-h-screen items-center justify-center overflow-hidden px-6"
+      className="space-bg grid-bg relative flex min-h-screen flex-col overflow-hidden px-4 sm:px-6 md:items-center md:justify-center"
     >
       {/* Layer 0 — planets + orbital arc lines */}
       <PlanetField />
@@ -1067,15 +1083,20 @@ export function Hero() {
       <SpaceObjectField />
       <DataStreamColumns />
 
-      {/* Layer 2 — Earth globe + drones */}
+      {/* Layer 2 — Earth globe + drones (visible on ALL screen sizes) */}
       <div
-        className="pointer-events-none absolute hidden md:block"
+        className="pointer-events-none absolute"
         style={{
-          left: '50%', top: '50%',
-          transform: 'translate(-50%, -52%)',
+          left: '50%',
+          top: isMobile ? '32%' : '50%',
+          transform: isMobile
+            ? `translate(-50%, -50%) scale(0.38)`
+            : 'translate(-50%, -52%)',
+          transformOrigin: 'center center',
           width: CONTAINER, height: CONTAINER,
-          opacity: 0.88,
+          opacity: isMobile ? 0.95 : 0.88,
           zIndex: 2,
+          transition: 'top 0.3s ease, transform 0.3s ease',
         }}
       >
         {/* Earth (z-index 5) */}
@@ -1146,13 +1167,18 @@ export function Hero() {
       {/* Layer 8 — pilot simulation modal */}
       <PilotSimModal open={simOpen} onClose={() => setSimOpen(false)} />
 
-      {/* Layer 7 — hero text */}
-      <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <p className="hero-badge mb-4 inline-block text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]"
+      {/* Layer 7 — hero text
+           Mobile:  stacks below the globe via pt-[50vh]; reduced to headline + tagline + CTAs
+           Desktop: centered over the globe (md:pt-0 restores original layout) */}
+      <div className="relative z-10 mx-auto w-full max-w-4xl px-2 pb-24 pt-[50vh] text-center md:pb-0 md:pt-0">
+        {/* Badge — desktop only */}
+        <p className="hero-badge mb-4 hidden text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4] md:inline-block"
           style={{ fontFamily: 'var(--font-orbitron)' }}>
           Professional Drone Operations &amp; Training
         </p>
-        <h1 className="mb-6 flex flex-wrap justify-center gap-0 text-[clamp(3.5rem,10vw,8rem)] font-black leading-none tracking-widest"
+
+        {/* Main headline — always visible */}
+        <h1 className="mb-5 flex flex-wrap justify-center gap-0 text-[clamp(2.2rem,9vw,8rem)] font-black leading-none tracking-widest md:mb-6"
           style={{ fontFamily: 'var(--font-orbitron)', perspective: '600px' }} aria-label={HEADLINE}>
           {chars.map((char, i) =>
             char === ' ' ? <span key={i} className="inline-block w-4" aria-hidden="true" /> : (
@@ -1160,16 +1186,26 @@ export function Hero() {
             )
           )}
         </h1>
-        <p className="hero-sub mb-4 text-xl font-light text-white md:text-2xl">Elevating the Future of Airspace</p>
-        <p className="hero-sub mb-10 text-base text-[#6B7A8D] md:text-lg">Professional Drone Projects &amp; Certified Training Programs</p>
-        <div className="hero-ctas flex flex-col items-center justify-center gap-4 sm:flex-row">
+
+        {/* Tagline — always visible */}
+        <p className="hero-sub mb-6 text-base font-light text-white sm:text-xl md:mb-4 md:text-2xl">
+          Elevating the Future of Airspace
+        </p>
+
+        {/* Subtitle — desktop only */}
+        <p className="hero-sub mb-10 hidden text-sm text-[#6B7A8D] sm:text-base md:block md:text-lg">
+          Professional Drone Projects &amp; Certified Training Programs
+        </p>
+
+        {/* CTA buttons */}
+        <div className="hero-ctas flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <Link href="/services"
-            className="rounded-md bg-[#00F5C4] px-8 py-3.5 text-sm font-semibold text-[#0A0B0D] transition-[transform,box-shadow] duration-300 hover:shadow-[0_0_30px_rgba(0,245,196,0.4)] hover:scale-[1.02]"
+            className="w-full rounded-md bg-[#00F5C4] px-8 py-3.5 text-sm font-semibold text-[#0A0B0D] transition-[transform,box-shadow] duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,245,196,0.4)] sm:w-auto"
             style={{ fontFamily: 'var(--font-orbitron)' }}>
             Explore Services →
           </Link>
           <Link href="/training"
-            className="rounded-md border border-[rgba(255,255,255,0.2)] px-8 py-3.5 text-sm font-medium text-white transition-[border-color,color] duration-300 hover:border-[rgba(0,245,196,0.5)] hover:text-[#00F5C4]">
+            className="w-full rounded-md border border-[rgba(255,255,255,0.2)] px-8 py-3.5 text-sm font-medium text-white transition-[border-color,color] duration-300 hover:border-[rgba(0,245,196,0.5)] hover:text-[#00F5C4] sm:w-auto">
             View Training Courses
           </Link>
         </div>

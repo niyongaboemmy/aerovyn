@@ -54,9 +54,9 @@ export function ServicesOverview() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="px-6 py-24">
+    <section ref={sectionRef} className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           {/* Left — large label */}
           <div className="services-title-text select-none">
             <p
@@ -84,7 +84,7 @@ export function ServicesOverview() {
             {services.map(({ icon: Icon, title, desc, href, cta }) => (
               <div
                 key={title}
-                className="services-card group rounded-2xl p-6 transition-[border-color,box-shadow] duration-300"
+                className="services-card group rounded-2xl p-5 transition-[border-color,box-shadow] duration-300 md:p-6"
                 style={{
                   background: 'rgba(255,255,255,0.03)',
                   border: '1px solid rgba(0,245,196,0.2)',

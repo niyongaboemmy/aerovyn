@@ -2,20 +2,28 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, Globe, Rss, Video } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "/" },
+  { label: "Home",     href: "/" },
   { label: "Services", href: "/services" },
   { label: "Training", href: "/training" },
   { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  { label: "About",    href: "/about" },
+  { label: "Blog",     href: "/blog" },
+];
+
+const socialLinks = [
+  { icon: Globe, href: "#", label: "LinkedIn"  },
+  { icon: Video, href: "#", label: "YouTube"   },
+  { icon: Rss,   href: "#", label: "Blog feed" },
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const pathname                   = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -26,10 +34,11 @@ export function Navbar() {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+
+  // Close menu on route change
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   return (
     <>
@@ -40,7 +49,7 @@ export function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between py-4">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
           {/* Logo */}
           <Link
             href="/"
@@ -56,7 +65,11 @@ export function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="nav-link text-sm font-medium tracking-wide text-[#C4CDD8] transition-colors hover:text-white"
+                  className={`nav-link text-sm font-medium tracking-wide transition-colors ${
+                    pathname === link.href
+                      ? "text-[#00F5C4]"
+                      : "text-[#C4CDD8] hover:text-white"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -74,64 +87,121 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — 44px touch target */}
           <button
-            className="flex items-center justify-center rounded-md p-2 text-[#C4CDD8] transition-colors hover:text-white md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-md text-[#C4CDD8] transition-colors hover:text-white md:hidden"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
       </header>
 
-      {/* Mobile full-screen overlay */}
+      {/* ── Mobile full-screen overlay ─────────────────────────────────────── */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col justify-center px-8 transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col grid-bg md:hidden ${
           menuOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
-        style={{ background: "rgba(10, 11, 13, 0.97)" }}
+        style={{
+          background: "rgba(10, 11, 13, 0.97)",
+          transition: "opacity 0.35s ease",
+        }}
       >
-        <ul className="flex flex-col gap-8">
-          {navLinks.map((link, i) => (
+        {/* Top accent gradient line */}
+        <div
+          className="absolute left-0 right-0 top-0 h-[2px]"
+          style={{
+            background: "linear-gradient(90deg, transparent 0%, #00F5C4 50%, transparent 100%)",
+          }}
+        />
+
+        {/* Scrollable nav content — leaves room for bottom nav bar (64px) */}
+        <div className="flex flex-1 flex-col justify-center overflow-y-auto px-8 pb-20 pt-24">
+          <ul className="flex flex-col gap-6">
+            {navLinks.map((link, i) => (
+              <li
+                key={link.href}
+                className="transition-all duration-300"
+                style={{
+                  transform:       menuOpen ? "translateX(0)"   : "translateX(40px)",
+                  transitionDelay: menuOpen ? `${i * 55}ms`     : "0ms",
+                  opacity:         menuOpen ? 1                  : 0,
+                }}
+              >
+                <Link
+                  href={link.href}
+                  className={`group flex items-center gap-3 font-display text-3xl font-bold tracking-wider transition-colors ${
+                    pathname === link.href
+                      ? "text-[#00F5C4]"
+                      : "text-white hover:text-[#00F5C4]"
+                  }`}
+                  style={{ fontFamily: "var(--font-orbitron)" }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {/* Active dot */}
+                  <span
+                    className="h-1.5 w-1.5 shrink-0 rounded-full transition-all duration-300"
+                    style={{
+                      background:   pathname === link.href ? "#00F5C4" : "transparent",
+                      boxShadow:    pathname === link.href ? "0 0 8px rgba(0,245,196,0.8)" : "none",
+                      border:       pathname === link.href ? "none" : "1px solid rgba(255,255,255,0.2)",
+                    }}
+                  />
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+
+            {/* Contact CTA */}
             <li
-              key={link.href}
-              className="transition-all duration-300"
+              className="mt-6 transition-all duration-300"
               style={{
-                transform: menuOpen ? "translateX(0)" : "translateX(40px)",
-                transitionDelay: menuOpen ? `${i * 60}ms` : "0ms",
-                opacity: menuOpen ? 1 : 0,
+                transform:       menuOpen ? "translateX(0)"                         : "translateX(40px)",
+                transitionDelay: menuOpen ? `${navLinks.length * 55}ms`             : "0ms",
+                opacity:         menuOpen ? 1                                        : 0,
               }}
             >
               <Link
-                href={link.href}
-                className="block font-display text-3xl font-bold tracking-wider text-white transition-colors hover:text-[#00F5C4]"
-                style={{ fontFamily: "var(--font-orbitron)" }}
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-md border border-[rgba(0,245,196,0.5)] px-6 py-3 text-sm font-medium text-[#00F5C4] transition-all duration-300 hover:bg-[rgba(0,245,196,0.08)]"
                 onClick={() => setMenuOpen(false)}
               >
-                {link.label}
+                Start a Project →
               </Link>
             </li>
-          ))}
-          <li
-            className="mt-4 transition-all duration-300"
+          </ul>
+
+          {/* Social links */}
+          <div
+            className="mt-10 flex items-center gap-4 transition-all duration-300"
             style={{
-              transform: menuOpen ? "translateX(0)" : "translateX(40px)",
-              transitionDelay: menuOpen ? `${navLinks.length * 60}ms` : "0ms",
-              opacity: menuOpen ? 1 : 0,
+              transform:       menuOpen ? "translateX(0)"                               : "translateX(40px)",
+              transitionDelay: menuOpen ? `${(navLinks.length + 1) * 55}ms`             : "0ms",
+              opacity:         menuOpen ? 1                                              : 0,
             }}
           >
-            <Link
-              href="/contact"
-              className="inline-block rounded-md border border-[rgba(0,245,196,0.5)] px-6 py-3 text-sm font-medium text-[#00F5C4]"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contact Us →
-            </Link>
-          </li>
-        </ul>
+            <span className="text-xs uppercase tracking-widest text-[#6B7A8D]" style={{ fontFamily: "var(--font-orbitron)" }}>
+              Follow
+            </span>
+            <div className="h-px flex-1 bg-[rgba(255,255,255,0.06)]" />
+            <div className="flex gap-3">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-[rgba(255,255,255,0.08)] text-[#6B7A8D] transition-colors hover:border-[rgba(0,245,196,0.3)] hover:text-[#00F5C4]"
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

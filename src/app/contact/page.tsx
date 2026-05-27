@@ -106,23 +106,23 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <div className="grid-bg pt-28 pb-16 px-6">
+      <div className="grid-bg px-4 pb-12 pt-20 sm:px-6 sm:pb-14 sm:pt-24 md:pb-16 md:pt-28">
         <div className="mx-auto max-w-7xl">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Get in Touch
           </p>
-          <h1 className="text-5xl font-black tracking-widest text-white md:text-7xl mb-4" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h1 className="mb-4 text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
             CONTACT
           </h1>
-          <p className="text-lg text-[#6B7A8D] max-w-xl">
+          <p className="max-w-xl text-base text-[#6B7A8D] sm:text-lg">
             Tell us what you need. We respond within one business day.
           </p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="px-6 py-16">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="px-4 py-12 sm:px-6 sm:py-16">
+        <div className="mx-auto max-w-7xl grid grid-cols-1 gap-10 lg:grid-cols-3 lg:gap-12">
           {/* Contact info sidebar */}
           <div className="lg:col-span-1 space-y-6">
             <div>
@@ -163,7 +163,7 @@ export default function ContactPage() {
 
           {/* Multi-step form */}
           <div className="lg:col-span-2">
-            <div className="rounded-2xl p-8 md:p-10" style={{ background: 'var(--bg-elevated)', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div className="rounded-2xl p-4 sm:p-8 md:p-10" style={{ background: 'var(--bg-elevated)', border: '1px solid rgba(255,255,255,0.08)' }}>
               <StepIndicator current={step} />
 
               {/* Step 0 — Intent */}
@@ -177,7 +177,7 @@ export default function ContactPage() {
                         key={id}
                         onClick={() => { setIntent(id); setStep(1) }}
                         aria-pressed={intent === id}
-                        className="w-full flex items-center justify-between rounded-xl px-6 py-4 text-left transition-all duration-200"
+                        className="w-full flex items-center justify-between rounded-xl px-4 py-4 text-left transition-all duration-200 sm:px-6"
                         style={{
                           background: intent === id ? `${accent}10` : 'rgba(255,255,255,0.03)',
                           border: intent === id ? `2px solid ${accent}50` : '1px solid rgba(255,255,255,0.08)',
@@ -206,7 +206,7 @@ export default function ContactPage() {
                     onChange={e => setDetails(e.target.value)}
                     rows={6}
                     placeholder="E.g. We need a 3-day aerial survey of a 50km road corridor in Northern Rwanda, starting in July 2026..."
-                    className="w-full rounded-xl px-5 py-4 text-sm text-white placeholder-[#6B7A8D] resize-none focus:outline-none transition-colors"
+                    className="w-full rounded-xl px-4 py-4 text-sm text-white placeholder-[#6B7A8D] resize-none focus:outline-none transition-colors sm:px-5 sm:text-base"
                     style={{ background: '#0a0b0d', border: '1px solid rgba(255,255,255,0.1)' }}
                     onFocus={e => { e.currentTarget.style.borderColor = 'rgba(0,245,196,0.4)' }}
                     onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}

@@ -46,7 +46,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero bar */}
-      <div className="grid-bg pt-28 pb-14 px-6">
+      <div className="grid-bg px-4 pb-10 pt-20 sm:px-6 sm:pb-14 sm:pt-24 md:pb-14 md:pt-28">
         <div className="mx-auto max-w-6xl">
           <p
             className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]"
@@ -54,15 +54,15 @@ export default function BlogPage() {
           >
             Insights &amp; Updates
           </p>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <h1
-              className="text-5xl font-black tracking-widest text-white md:text-7xl"
+              className="text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl"
               style={{ fontFamily: 'var(--font-orbitron)' }}
             >
               BLOG
             </h1>
             {/* Search */}
-            <div className="relative max-w-sm w-full">
+            <div className="relative w-full max-w-xs sm:max-w-sm">
               <svg
                 aria-hidden="true"
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B7A8D]"
@@ -89,7 +89,7 @@ export default function BlogPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-6xl px-6 py-14 space-y-14">
+      <div className="mx-auto max-w-6xl space-y-12 px-4 py-10 sm:px-6 sm:py-14 sm:space-y-14">
         {filtered.length === 0 ? (
           <div className="py-24 text-center">
             <p className="text-[#6B7A8D] text-lg">No articles match your search.</p>

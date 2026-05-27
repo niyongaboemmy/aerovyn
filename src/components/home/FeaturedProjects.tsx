@@ -67,7 +67,7 @@ export function FeaturedProjects() {
   return (
     <div ref={sectionRef} className="projects-section">
       {/* Mobile: vertical stack */}
-      <div className="px-6 py-24 lg:hidden">
+      <div className="px-4 py-16 sm:px-6 sm:py-20 lg:hidden">
         <p
           className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]"
           style={{ fontFamily: 'var(--font-orbitron)' }}

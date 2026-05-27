@@ -84,7 +84,7 @@ export function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="px-6 py-24"
+      className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24"
       style={{ background: 'var(--bg-surface)' }}
     >
       <div className="mx-auto max-w-3xl text-center">
@@ -103,7 +103,7 @@ export function Testimonials() {
 
           {/* Quote text */}
           <div ref={quoteRef}>
-            <blockquote className="mb-10 text-xl font-light leading-relaxed text-[#C4CDD8] md:text-2xl">
+            <blockquote className="mb-10 text-lg font-light leading-relaxed text-[#C4CDD8] sm:text-xl md:text-2xl">
               &ldquo;{t.quote}&rdquo;
             </blockquote>
 
@@ -132,13 +132,19 @@ export function Testimonials() {
                     setActive(i)
                   }
                 }}
-                className="h-1.5 rounded-full transition-all duration-300"
-                style={{
-                  width: i === active ? 24 : 6,
-                  background: i === active ? '#00F5C4' : 'rgba(255,255,255,0.2)',
-                }}
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center"
+                style={{ background: 'transparent', border: 'none' }}
                 aria-label={`Go to testimonial ${i + 1}`}
-              />
+              >
+                <span
+                  className="block rounded-full transition-all duration-300"
+                  style={{
+                    width: i === active ? 24 : 6,
+                    height: 6,
+                    background: i === active ? '#00F5C4' : 'rgba(255,255,255,0.2)',
+                  }}
+                />
+              </button>
             ))}
           </div>
         </div>
