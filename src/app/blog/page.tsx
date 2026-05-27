@@ -64,6 +64,7 @@ export default function BlogPage() {
             {/* Search */}
             <div className="relative max-w-sm w-full">
               <svg
+                aria-hidden="true"
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B7A8D]"
                 width="16"
                 height="16"
@@ -74,8 +75,10 @@ export default function BlogPage() {
               >
                 <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
               </svg>
+              <label htmlFor="blog-search" className="sr-only">Search articles</label>
               <input
-                type="text"
+                id="blog-search"
+                type="search"
                 placeholder="Search articles…"
                 value={query}
                 onChange={(e) => handleSearch(e.target.value)}

@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
-import Link from 'next/link'
+import { useRef, useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight } from 'lucide-react'
@@ -36,52 +35,51 @@ export function FeaturedProjects() {
   const sectionRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current
     const track = trackRef.current
     if (!section || !track) return
+    if (!window.matchMedia('(min-width: 1024px)').matches) return
 
-    // Only enable horizontal scroll on desktop
-    const mm = gsap.matchMedia()
-    mm.add('(min-width: 1024px)', () => {
-      const tween = gsap.to(track, {
-        x: () => -(track.scrollWidth - window.innerWidth + 96),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: section,
-          pin: true,
-          scrub: 1.5,
-          end: () => '+=' + (track.scrollWidth - window.innerWidth + 96),
-          invalidateOnRefresh: true,
-        },
-      })
-      return () => tween.kill()
+    const scrollDistance = track.scrollWidth - window.innerWidth + 96
+    section.style.height = `${window.innerHeight + scrollDistance}px`
+
+    const tween = gsap.to(track, {
+      x: () => -(track.scrollWidth - window.innerWidth + 96),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end: () => `+=${track.scrollWidth - window.innerWidth + 96}`,
+        scrub: 1.5,
+        invalidateOnRefresh: true,
+      },
     })
 
-    return () => mm.revert()
+    return () => {
+      tween.scrollTrigger?.kill()
+      tween.kill()
+      section.style.height = ''
+      gsap.set(track, { x: 0 })
+    }
   }, [])
 
   return (
-    <div ref={sectionRef} className="projects-section overflow-hidden">
-      <div className="px-6 pb-4 pt-24">
-        <div className="mx-auto max-w-7xl">
-          <p
-            className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]"
-            style={{ fontFamily: 'var(--font-orbitron)' }}
-          >
-            Featured Work
-          </p>
-          <h2
-            className="text-[clamp(1.8rem,4vw,3rem)] font-black text-white"
-            style={{ fontFamily: 'var(--font-orbitron)' }}
-          >
-            PROJECTS
-          </h2>
-        </div>
-      </div>
-
+    <div ref={sectionRef} className="projects-section">
       {/* Mobile: vertical stack */}
-      <div className="px-6 pb-24 lg:hidden">
+      <div className="px-6 py-24 lg:hidden">
+        <p
+          className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]"
+          style={{ fontFamily: 'var(--font-orbitron)' }}
+        >
+          Featured Work
+        </p>
+        <h2
+          className="mb-8 text-[clamp(1.8rem,4vw,3rem)] font-black text-white"
+          style={{ fontFamily: 'var(--font-orbitron)' }}
+        >
+          PROJECTS
+        </h2>
         <div className="mx-auto max-w-7xl flex flex-col gap-6">
           {projects.map((p) => (
             <ProjectCard key={p.title} {...p} />
@@ -89,15 +87,34 @@ export function FeaturedProjects() {
         </div>
       </div>
 
-      {/* Desktop: horizontal track */}
-      <div
-        ref={trackRef}
-        className="projects-track hidden lg:flex lg:gap-6 lg:px-12 lg:pb-24 lg:pt-8"
-        style={{ width: 'max-content' }}
-      >
-        {projects.map((p) => (
-          <ProjectCard key={p.title} {...p} />
-        ))}
+      {/* Desktop: CSS sticky viewport — no DOM node movement */}
+      <div className="sticky top-0 hidden h-screen overflow-hidden lg:block">
+        <div className="px-6 pb-4 pt-24">
+          <div className="mx-auto max-w-7xl">
+            <p
+              className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]"
+              style={{ fontFamily: 'var(--font-orbitron)' }}
+            >
+              Featured Work
+            </p>
+            <h2
+              className="text-[clamp(1.8rem,4vw,3rem)] font-black text-white"
+              style={{ fontFamily: 'var(--font-orbitron)' }}
+            >
+              PROJECTS
+            </h2>
+          </div>
+        </div>
+
+        <div
+          ref={trackRef}
+          className="projects-track flex gap-6 px-12 pb-24 pt-8"
+          style={{ width: 'max-content' }}
+        >
+          {projects.map((p) => (
+            <ProjectCard key={p.title} {...p} />
+          ))}
+        </div>
       </div>
     </div>
   )

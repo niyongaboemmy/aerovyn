@@ -1,48 +1,51 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: 'Services', href: '/services' },
-  { label: 'Training', href: '/training' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'About', href: '/about' },
-  { label: 'Blog', href: '/blog' },
-]
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Training", href: "/training" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [menuOpen])
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'border-b border-[rgba(0,245,196,0.15)] bg-[rgba(10,11,13,0.85)] backdrop-blur-[20px]'
-            : 'bg-transparent'
+            ? "border-b border-[rgba(0,245,196,0.15)] bg-[rgba(10,11,13,0.85)] backdrop-blur-[20px]"
+            : "bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between py-4">
           {/* Logo */}
           <Link
             href="/"
             className="font-display text-xl font-bold tracking-widest text-white"
-            style={{ fontFamily: 'var(--font-orbitron)' }}
+            style={{ fontFamily: "var(--font-orbitron)" }}
           >
             <span className="text-[#00F5C4]">AERO</span>VYN
           </Link>
@@ -75,7 +78,7 @@ export function Navbar() {
           <button
             className="flex items-center justify-center rounded-md p-2 text-[#C4CDD8] transition-colors hover:text-white md:hidden"
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -86,10 +89,10 @@ export function Navbar() {
       <div
         className={`fixed inset-0 z-40 flex flex-col justify-center px-8 transition-all duration-500 md:hidden ${
           menuOpen
-            ? 'pointer-events-auto opacity-100'
-            : 'pointer-events-none opacity-0'
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
-        style={{ background: 'rgba(10, 11, 13, 0.97)' }}
+        style={{ background: "rgba(10, 11, 13, 0.97)" }}
       >
         <ul className="flex flex-col gap-8">
           {navLinks.map((link, i) => (
@@ -97,15 +100,15 @@ export function Navbar() {
               key={link.href}
               className="transition-all duration-300"
               style={{
-                transform: menuOpen ? 'translateX(0)' : 'translateX(40px)',
-                transitionDelay: menuOpen ? `${i * 60}ms` : '0ms',
+                transform: menuOpen ? "translateX(0)" : "translateX(40px)",
+                transitionDelay: menuOpen ? `${i * 60}ms` : "0ms",
                 opacity: menuOpen ? 1 : 0,
               }}
             >
               <Link
                 href={link.href}
                 className="block font-display text-3xl font-bold tracking-wider text-white transition-colors hover:text-[#00F5C4]"
-                style={{ fontFamily: 'var(--font-orbitron)' }}
+                style={{ fontFamily: "var(--font-orbitron)" }}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -115,8 +118,8 @@ export function Navbar() {
           <li
             className="mt-4 transition-all duration-300"
             style={{
-              transform: menuOpen ? 'translateX(0)' : 'translateX(40px)',
-              transitionDelay: menuOpen ? `${navLinks.length * 60}ms` : '0ms',
+              transform: menuOpen ? "translateX(0)" : "translateX(40px)",
+              transitionDelay: menuOpen ? `${navLinks.length * 60}ms` : "0ms",
               opacity: menuOpen ? 1 : 0,
             }}
           >
@@ -131,5 +134,5 @@ export function Navbar() {
         </ul>
       </div>
     </>
-  )
+  );
 }

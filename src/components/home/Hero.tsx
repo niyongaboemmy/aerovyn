@@ -155,21 +155,7 @@ function SpaceObjectField() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" style={{ zIndex: 1 }}>
       {ASTEROIDS.map((a, i) => (
-        <div key={i} className="absolute" style={{
-          top: a.top, left: a.left,
-          animation: `none`,
-          animationName: 'asteroid-cross-' + i,
-        }}>
-          <style>{`
-            @keyframes asteroid-cross-${i} {
-              0%   { transform: translate(0,0) rotate(0deg);          opacity: 0;   }
-              4%   { opacity: 0.7; }
-              92%  { opacity: 0.55; }
-              96%  { opacity: 0; }
-              100% { transform: translate(${a.tx},${a.ty}) rotate(${a.rot}); opacity: 0; }
-            }
-            div[data-ast="${i}"] { animation: asteroid-cross-${i} ${a.speed} linear ${a.delay} infinite; }
-          `}</style>
+        <div key={i} className="absolute" style={{ top: a.top, left: a.left }}>
           <div data-ast={String(i)} style={{ animation: `asteroid-cross-${i} ${a.speed} linear ${a.delay} infinite` }}>
             <AsteroidSVG size={a.size} />
           </div>
@@ -179,15 +165,6 @@ function SpaceObjectField() {
       {/* Satellite */}
       <div className="absolute" style={{ top: '4%', left: '94%' }}>
         <div style={{ animation: 'satellite-cross 90s linear 30s infinite' }}>
-          <style>{`
-            @keyframes satellite-cross {
-              0%   { transform: translate(0,0) rotate(-25deg);            opacity: 0;    }
-              3%   { opacity: 0.7; }
-              94%  { opacity: 0.6; }
-              97%  { opacity: 0; }
-              100% { transform: translate(-115vw,65vh) rotate(-25deg);    opacity: 0;    }
-            }
-          `}</style>
           <svg width="36" height="14" viewBox="0 0 36 14" fill="none"
             style={{ filter: 'drop-shadow(0 0 3px rgba(0,245,196,0.45))' }}>
             <rect x="12" y="4" width="12" height="6" rx="1" fill="rgba(160,200,220,0.7)" stroke="rgba(0,245,196,0.4)" strokeWidth="0.6" />
@@ -201,14 +178,6 @@ function SpaceObjectField() {
       {/* Comet */}
       <div className="absolute" style={{ top: '2%', left: '96%' }}>
         <div style={{ animation: 'comet-streak 12s linear 45s infinite' }}>
-          <style>{`
-            @keyframes comet-streak {
-              0%   { transform: translate(0,0);           opacity: 0; }
-              5%   { opacity: 1; }
-              90%  { opacity: 0.8; }
-              100% { transform: translate(-105vw,72vh);   opacity: 0; }
-            }
-          `}</style>
           <svg width="80" height="8" viewBox="0 0 80 8" fill="none">
             <defs>
               <linearGradient id="comet-tail" x1="0" y1="0" x2="1" y2="0">
@@ -347,7 +316,7 @@ function OrbitDrone() {
     const svgWrap = svgWrapRef.current
     if (!drone) return
 
-    gsap.fromTo(drone, { opacity: 0, scale: 0.3 },
+    const fadeIn = gsap.fromTo(drone, { opacity: 0, scale: 0.3 },
       { opacity: 1, scale: 1, duration: 1.6, delay: 1.4, ease: 'back.out(1.2)' })
 
     let t = 0
@@ -366,11 +335,15 @@ function OrbitDrone() {
         opacity: ly > 0 ? 0.18 : 1,
         scale:   ly > 0 ? 0.88 : 1,
       })
-      if (svgWrap) gsap.to(svgWrap, { rotateY: Math.max(-22, Math.min(22, -dx * 22)), duration: 0.35, overwrite: 'auto' })
+      if (svgWrap) gsap.to(svgWrap, { rotationY: Math.max(-22, Math.min(22, -dx * 22)), duration: 0.35, overwrite: 'auto' })
     }
 
     gsap.ticker.add(tick)
-    return () => gsap.ticker.remove(tick)
+    return () => {
+      fadeIn.kill()
+      gsap.killTweensOf(svgWrap)
+      gsap.ticker.remove(tick)
+    }
   }, [])
 
   return (
@@ -397,7 +370,7 @@ function SurfaceDrone({ heroRef }: { heroRef: React.RefObject<HTMLElement | null
     if (window.matchMedia('(pointer: coarse)').matches) return
 
     gsap.set(drone, { x: HALF - 80, y: HALF - 80, scale: 0.72, opacity: 0 })
-    gsap.to(drone, { opacity: 1, duration: 2, delay: 2.2, ease: 'power2.out' })
+    const fadeIn = gsap.to(drone, { opacity: 1, duration: 2, delay: 2.2, ease: 'power2.out' })
 
     const MAX_R = (EARTH_SIZE / 2) * 0.82
 
@@ -407,7 +380,7 @@ function SurfaceDrone({ heroRef }: { heroRef: React.RefObject<HTMLElement | null
 
     const quickX  = gsap.quickTo(drone,    'x',       { duration: 6.0, ease: 'power1.out' })
     const quickY  = gsap.quickTo(drone,    'y',       { duration: 6.0, ease: 'power1.out' })
-    const quickRY = gsap.quickTo(svgWrap!, 'rotateY', { duration: 1.2, ease: 'power1.out' })
+    const quickRY = gsap.quickTo(svgWrap!, 'rotationY', { duration: 1.2, ease: 'power1.out' })
 
     const onMove = (e: MouseEvent) => {
       const rect  = hero.getBoundingClientRect()
@@ -431,6 +404,9 @@ function SurfaceDrone({ heroRef }: { heroRef: React.RefObject<HTMLElement | null
 
     gsap.ticker.add(tick)
     return () => {
+      fadeIn.kill()
+      gsap.killTweensOf(drone)
+      gsap.killTweensOf(svgWrap)
       gsap.ticker.remove(tick)
       hero.removeEventListener('mousemove', onMove)
     }
@@ -468,7 +444,7 @@ function SkyDrone({ seed, heroRef }: { seed: typeof SKY_DRONE_SEEDS[0]; heroRef:
     const H = hero.offsetHeight
 
     gsap.set(drone, { x: seed.sx * W, y: seed.sy * H, scale: seed.scale, opacity: 0 })
-    gsap.to(drone, { opacity: seed.opacity, duration: 2.5, delay: 1 + seed.id * 0.9, ease: 'power2.out' })
+    const fadeIn = gsap.to(drone, { opacity: seed.opacity, duration: 2.5, delay: 1 + seed.id * 0.9, ease: 'power2.out' })
 
     // Generate 6 waypoints client-side
     const waypoints = Array.from({ length: 6 }, () => ({
@@ -483,11 +459,11 @@ function SkyDrone({ seed, heroRef }: { seed: typeof SKY_DRONE_SEEDS[0]; heroRef:
       const bankY = wp.x > prevX ? -12 : 12
       prevX = wp.x
       tl.to(drone, { x: wp.x, y: wp.y, duration: dur, ease: 'sine.inOut' }, '<0.2')
-      if (svgWrap) tl.to(svgWrap, { rotateY: bankY, duration: dur * 0.3, ease: 'power1.inOut' }, '<')
+      if (svgWrap) tl.to(svgWrap, { rotationY: bankY, duration: dur * 0.3, ease: 'power1.inOut' }, '<')
     })
     tl.to(drone, { x: seed.sx * W, y: seed.sy * H, duration: 12, ease: 'sine.inOut' })
 
-    return () => { tl.kill() }
+    return () => { fadeIn.kill(); tl.kill() }
   }, [])
 
   return (
@@ -863,11 +839,10 @@ function DroneCameraPanel({ onOpen }: { onOpen: () => void }) {
   const statusIdxRef = useRef(0)
 
   useEffect(() => {
-    // Animate crosshair slow drift
     const ch = crosshairRef.current
-    if (ch) {
-      gsap.to(ch, { x: 22, y: -18, duration: 3.8, ease: 'sine.inOut', repeat: -1, yoyo: true })
-    }
+    const chAnim = ch
+      ? gsap.to(ch, { x: 22, y: -18, duration: 3.8, ease: 'sine.inOut', repeat: -1, yoyo: true })
+      : null
 
     const interval = setInterval(() => {
       setTelem(prev => {
@@ -885,7 +860,7 @@ function DroneCameraPanel({ onOpen }: { onOpen: () => void }) {
       setTelem(prev => ({ ...prev, status: STATUS_CYCLE[statusIdxRef.current] }))
     }, 7000)
 
-    return () => { clearInterval(interval); clearInterval(statusInterval) }
+    return () => { chAnim?.kill(); clearInterval(interval); clearInterval(statusInterval) }
   }, [])
 
   const orbitron = { fontFamily: 'var(--font-orbitron)' }

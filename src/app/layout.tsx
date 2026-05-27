@@ -6,6 +6,8 @@ import { Footer } from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
 import { CustomCursor } from '@/components/ui/CustomCursor'
 import { PageTransition } from '@/components/ui/PageTransition'
+import { OrganizationSchema } from '@/components/seo/OrganizationSchema'
+import { PlausibleAnalytics } from '@/components/seo/PlausibleAnalytics'
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -22,6 +24,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aerovyn.com'),
   title: {
     default: 'AEROVYN — Elevating the Future of Airspace',
     template: '%s | AEROVYN',
@@ -39,6 +42,20 @@ export const metadata: Metadata = {
     title: 'AEROVYN — Elevating the Future of Airspace',
     description: 'Professional Drone Projects & Certified Training Programs',
     type: 'website',
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'AEROVYN — Elevating the Future of Airspace',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AEROVYN — Elevating the Future of Airspace',
+    description: 'Professional Drone Projects & Certified Training Programs',
+    images: ['/api/og'],
   },
 }
 
@@ -55,6 +72,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <OrganizationSchema />
+        <PlausibleAnalytics />
         {/* Skip to main content — accessibility */}
         <a
           href="#main-content"

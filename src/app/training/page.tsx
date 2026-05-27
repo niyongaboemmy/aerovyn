@@ -101,6 +101,8 @@ function CourseCard({ course, expanded, onToggle }: { course: typeof courses[0];
         className="w-full px-7 py-6 flex items-start justify-between gap-4 text-left transition-colors duration-200"
         style={{ background: expanded ? `${levelColor}06` : 'transparent' }}
         onClick={onToggle}
+        aria-expanded={expanded}
+        aria-controls={`course-details-${title.replace(/\s+/g, '-').toLowerCase()}`}
       >
         <div className="flex-grow">
           <div className="flex items-center gap-3 mb-3 flex-wrap">
@@ -120,7 +122,11 @@ function CourseCard({ course, expanded, onToggle }: { course: typeof courses[0];
 
       {/* Expanded content */}
       {expanded && (
-        <div className="px-7 pb-7 border-t" style={{ borderColor: `${levelColor}15` }}>
+        <div
+          id={`course-details-${title.replace(/\s+/g, '-').toLowerCase()}`}
+          className="px-7 pb-7 border-t"
+          style={{ borderColor: `${levelColor}15` }}
+        >
           <p className="text-[#6B7A8D] text-sm leading-relaxed mt-5 mb-6">{summary}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Modules */}
