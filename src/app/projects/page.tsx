@@ -3,7 +3,6 @@
 import { useState, useCallback, useRef } from 'react'
 import { projects } from '@/data/projects'
 import { PortfolioCard } from '@/components/portfolio/PortfolioCard'
-import { useGSAP } from '@/hooks/useGSAP'
 
 type Category = 'All' | 'Mapping' | 'Photography' | 'Agriculture' | 'Industrial' | 'Events'
 const CATEGORIES: Category[] = ['All', 'Mapping', 'Photography', 'Agriculture', 'Industrial', 'Events']
@@ -32,15 +31,8 @@ export default function ProjectsPage() {
     )
   })
 
-  useGSAP((g) => {
-    g.from('.portfolio-card', {
-      opacity: 0,
-      y: 30,
-      stagger: 0.08,
-      duration: 0.6,
-      ease: 'power2.out',
-    })
-  }, [])
+  // CSS animation instead of GSAP from() — immune to React StrictMode
+  // double-invoke that leaves opacity:0 inline style permanently stuck
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
@@ -128,7 +120,10 @@ export default function ProjectsPage() {
         ) : (
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
             {filtered.map((project, i) => (
-              <div key={project.slug} className="portfolio-card">
+              <div
+                key={project.slug}
+                style={{ animation: `card-enter 0.5s ease-out ${i * 80}ms both` }}
+              >
                 <PortfolioCard project={project} tall={i % 3 === 1} />
               </div>
             ))}

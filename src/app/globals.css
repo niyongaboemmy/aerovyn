@@ -369,6 +369,13 @@ a, button, [role="button"] {
   to   { transform: translateY(0);    opacity: 1; }
 }
 
+/* ─── Card enter animation (blog + projects pages) ──────────────────────── */
+/* CSS-based so React StrictMode double-invoke never leaves opacity:0 stuck */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
 /* ─── CSS Earth rotation (used by mobile instead of GSAP ticker) ─────────── */
 @keyframes earth-img-spin {
   from { background-position-x: 0%;   }
