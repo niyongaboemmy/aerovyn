@@ -6,24 +6,24 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Globe, Rss, Video } from "lucide-react";
 
 const navLinks = [
-  { label: "Home",     href: "/" },
+  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Training", href: "/training" },
   { label: "Projects", href: "/projects" },
-  { label: "About",    href: "/about" },
-  { label: "Blog",     href: "/blog" },
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const socialLinks = [
-  { icon: Globe, href: "#", label: "LinkedIn"  },
-  { icon: Video, href: "#", label: "YouTube"   },
-  { icon: Rss,   href: "#", label: "Blog feed" },
+  { icon: Globe, href: "#", label: "LinkedIn" },
+  { icon: Video, href: "#", label: "YouTube" },
+  { icon: Rss, href: "#", label: "Blog feed" },
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled]   = useState(false);
-  const [menuOpen, setMenuOpen]   = useState(false);
-  const pathname                   = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -34,11 +34,15 @@ export function Navbar() {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   // Close menu on route change
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -49,7 +53,7 @@ export function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-0 py-4">
           {/* Logo */}
           <Link
             href="/"
@@ -115,7 +119,8 @@ export function Navbar() {
         <div
           className="absolute left-0 right-0 top-0 h-[2px]"
           style={{
-            background: "linear-gradient(90deg, transparent 0%, #00F5C4 50%, transparent 100%)",
+            background:
+              "linear-gradient(90deg, transparent 0%, #00F5C4 50%, transparent 100%)",
           }}
         />
 
@@ -127,9 +132,9 @@ export function Navbar() {
                 key={link.href}
                 className="transition-all duration-300"
                 style={{
-                  transform:       menuOpen ? "translateX(0)"   : "translateX(40px)",
-                  transitionDelay: menuOpen ? `${i * 55}ms`     : "0ms",
-                  opacity:         menuOpen ? 1                  : 0,
+                  transform: menuOpen ? "translateX(0)" : "translateX(40px)",
+                  transitionDelay: menuOpen ? `${i * 55}ms` : "0ms",
+                  opacity: menuOpen ? 1 : 0,
                 }}
               >
                 <Link
@@ -146,9 +151,16 @@ export function Navbar() {
                   <span
                     className="h-1.5 w-1.5 shrink-0 rounded-full transition-all duration-300"
                     style={{
-                      background:   pathname === link.href ? "#00F5C4" : "transparent",
-                      boxShadow:    pathname === link.href ? "0 0 8px rgba(0,245,196,0.8)" : "none",
-                      border:       pathname === link.href ? "none" : "1px solid rgba(255,255,255,0.2)",
+                      background:
+                        pathname === link.href ? "#00F5C4" : "transparent",
+                      boxShadow:
+                        pathname === link.href
+                          ? "0 0 8px rgba(0,245,196,0.8)"
+                          : "none",
+                      border:
+                        pathname === link.href
+                          ? "none"
+                          : "1px solid rgba(255,255,255,0.2)",
                     }}
                   />
                   {link.label}
@@ -160,9 +172,9 @@ export function Navbar() {
             <li
               className="mt-6 transition-all duration-300"
               style={{
-                transform:       menuOpen ? "translateX(0)"                         : "translateX(40px)",
-                transitionDelay: menuOpen ? `${navLinks.length * 55}ms`             : "0ms",
-                opacity:         menuOpen ? 1                                        : 0,
+                transform: menuOpen ? "translateX(0)" : "translateX(40px)",
+                transitionDelay: menuOpen ? `${navLinks.length * 55}ms` : "0ms",
+                opacity: menuOpen ? 1 : 0,
               }}
             >
               <Link
@@ -179,12 +191,17 @@ export function Navbar() {
           <div
             className="mt-10 flex items-center gap-4 transition-all duration-300"
             style={{
-              transform:       menuOpen ? "translateX(0)"                               : "translateX(40px)",
-              transitionDelay: menuOpen ? `${(navLinks.length + 1) * 55}ms`             : "0ms",
-              opacity:         menuOpen ? 1                                              : 0,
+              transform: menuOpen ? "translateX(0)" : "translateX(40px)",
+              transitionDelay: menuOpen
+                ? `${(navLinks.length + 1) * 55}ms`
+                : "0ms",
+              opacity: menuOpen ? 1 : 0,
             }}
           >
-            <span className="text-xs uppercase tracking-widest text-[#6B7A8D]" style={{ fontFamily: "var(--font-orbitron)" }}>
+            <span
+              className="text-xs uppercase tracking-widest text-[#6B7A8D]"
+              style={{ fontFamily: "var(--font-orbitron)" }}
+            >
               Follow
             </span>
             <div className="h-px flex-1 bg-[rgba(255,255,255,0.06)]" />

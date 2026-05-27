@@ -37,7 +37,7 @@ export default function BlogPage() {
     <div className="min-h-screen" style={{ background: "var(--bg-base)" }}>
       {/* Hero bar */}
       <div className="grid-bg px-4 pb-10 pt-20 sm:px-6 sm:pb-14 sm:pt-24 md:pb-14 md:pt-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="mx-auto max-w-7xl">
           <p
             className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]"
             style={{ fontFamily: "var(--font-orbitron)" }}
@@ -82,7 +82,7 @@ export default function BlogPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl space-y-12 px-4 py-10 sm:px-6 sm:py-14 sm:space-y-14">
+      <div className="mx-auto max-w-7xl space-y-12 py-10 sm:py-14 sm:space-y-14">
         {filtered.length === 0 ? (
           <div className="py-24 text-center">
             <p className="text-[#6B7A8D] text-lg">
