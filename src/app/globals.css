@@ -368,3 +368,36 @@ a, button, [role="button"] {
   from { transform: translateY(100%); opacity: 0; }
   to   { transform: translateY(0);    opacity: 1; }
 }
+
+/* ─── CSS Earth rotation (used by mobile instead of GSAP ticker) ─────────── */
+@keyframes earth-img-spin {
+  from { background-position-x: 0%;   }
+  to   { background-position-x: -50%; }
+}
+
+/* ─── Touch / mobile performance safeguards ──────────────────────────────── */
+@media (pointer: coarse) {
+  /* Pause expensive rotor-spin (0.09s fast loops) on touch devices.
+     Drones are hidden on mobile via React state, but this covers any edge case. */
+  .rotor-cw,
+  .rotor-ccw {
+    animation-play-state: paused;
+  }
+
+  /* Disable all nebula animations on touch — filter:blur + CSS animation = Safari freeze.
+     Nebulae are hidden on mobile via React state, but this is the CSS safety net. */
+  @keyframes nebula-breathe {
+    from {} to {}
+  }
+  @keyframes nebula-drift {
+    from {} to {}
+  }
+
+  /* Kill star animations — 40+ simultaneous opacity/scale animations on touch = jank */
+  @keyframes star-twinkle {
+    from {} to {}
+  }
+  @keyframes star-drift {
+    from {} to {}
+  }
+}

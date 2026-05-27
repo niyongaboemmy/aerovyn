@@ -13,6 +13,13 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
   // ── Lenis instance (created once, lives for the whole session) ─────────────
   useEffect(() => {
+    // Skip Lenis on touch/mobile — iOS native momentum scroll is smoother
+    // and eliminates one full RAF callback from the already-heavy animation stack.
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      setTimeout(() => ScrollTrigger.refresh(), 100)
+      return
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

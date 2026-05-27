@@ -28,7 +28,7 @@ type Star = {
   drift: boolean; driftDur: number; driftDelay: number
 }
 
-function makeStarField(count = 260): Star[] {
+function makeStarField(count = 260, animate = true): Star[] {
   return Array.from({ length: count }, (_, i) => {
     const r = Math.random()
     return {
@@ -38,10 +38,11 @@ function makeStarField(count = 260): Star[] {
       left:       Math.random() * 100,
       opacity:    0.15 + Math.random() * 0.55,
       color:      r < 0.08 ? '#00F5C4' : r < 0.28 ? '#c0d8ff' : '#ffffff',
-      twinkle:    Math.random() < 0.22,
+      // On mobile: static stars — zero CSS animations = zero compositor overhead
+      twinkle:    animate && Math.random() < 0.22,
       duration:   2.5 + Math.random() * 5,
       delay:      Math.random() * 10,
-      drift:      Math.random() < 0.15,
+      drift:      animate && Math.random() < 0.15,
       driftDur:   40 + Math.random() * 30,
       driftDelay: Math.random() * 20,
     }
@@ -73,7 +74,8 @@ function NebulaLayer() {
         <div key={i} className="absolute" style={{
           ...n.style, background: n.color, filter: `blur(${n.blur}px)`,
           animation: `nebula-breathe ${n.breathe} ease-in-out ${n.bDelay} infinite, nebula-drift ${n.drift} ease-in-out ${n.dDelay} infinite`,
-          willChange: 'transform, opacity',
+          // No willChange: filter:blur + willChange on the same element creates a composited
+          // layer that Safari handles poorly — causes frame drops even on desktop.
         }} />
       ))}
       {shootingStars.map((s, i) => (
@@ -1018,8 +1020,11 @@ export function Hero() {
       const w = window.innerWidth
       setIsMobile(w < 768)
       setStars((prev) => {
-        const wanted = w < 640 ? 80 : 260
-        if (prev.length !== wanted) return makeStarField(wanted)
+        // Mobile: 40 static stars (no animations) — eliminates ~30+ CSS animation slots
+        // Desktop: 260 animated stars
+        const wanted  = w < 640 ? 40 : 260
+        const animate = w >= 640
+        if (prev.length !== wanted) return makeStarField(wanted, animate)
         return prev
       })
     }
@@ -1034,6 +1039,13 @@ export function Hero() {
     const texture = earthTextureRef.current
     const hero    = sectionRef.current
     if (!texture || !hero) return
+
+    // Mobile: pure CSS animation — eliminates one GSAP ticker.add() call per frame.
+    // Touch devices can't use mouse-parallax anyway, so no feature loss.
+    if (window.innerWidth < 768) {
+      texture.style.animation = 'earth-img-spin 22s linear infinite'
+      return () => { texture.style.animation = '' }
+    }
 
     let posX        = 0
     let mouseExtra  = 0
@@ -1074,14 +1086,15 @@ export function Hero() {
       ref={sectionRef}
       className="space-bg grid-bg relative flex min-h-screen flex-col overflow-hidden px-4 sm:px-6 md:items-center md:justify-center"
     >
-      {/* Layer 0 — planets + orbital arc lines */}
-      <PlanetField />
-      <OrbitalArcs />
+      {/* Layer 0 — planets + orbital arc lines (desktop only — heavy GPU) */}
+      {!isMobile && <PlanetField />}
+      {!isMobile && <OrbitalArcs />}
 
-      {/* Layer 1 — nebulae + shooting stars + space objects + data streams */}
-      <NebulaLayer />
-      <SpaceObjectField />
-      <DataStreamColumns />
+      {/* Layer 1 — nebulae + shooting stars + space objects + data streams (desktop only) */}
+      {/* Nebulae: 5× filter:blur + willChange + dual animations = Safari killer on mobile */}
+      {!isMobile && <NebulaLayer />}
+      {!isMobile && <SpaceObjectField />}
+      {!isMobile && <DataStreamColumns />}
 
       {/* Layer 2 — Earth globe + drones (visible on ALL screen sizes) */}
       <div
@@ -1116,12 +1129,13 @@ export function Hero() {
           zIndex: 4,
         }} />
 
-        <OrbitDrone />
+        {/* OrbitDrone adds a GSAP ticker.add() call — skip on mobile */}
+        {!isMobile && <OrbitDrone />}
         <SurfaceDrone heroRef={sectionRef} />
       </div>
 
-      {/* Layer 3 — HUD overlay */}
-      <HudOverlay />
+      {/* Layer 3 — HUD overlay (desktop only — 11 simultaneous CSS animations) */}
+      {!isMobile && <HudOverlay />}
 
       {/* Layer 4 — star field */}
       {stars.map((s) => (
@@ -1135,8 +1149,8 @@ export function Hero() {
         }} />
       ))}
 
-      {/* Layer 5 — sky drones (full-section) */}
-      <SkyDroneField heroRef={sectionRef} />
+      {/* Layer 5 — sky drones (desktop only — 4 GSAP repeat:-1 timelines) */}
+      {!isMobile && <SkyDroneField heroRef={sectionRef} />}
 
       {/* Layer 6 — drone camera panel */}
       <DroneCameraPanel onOpen={() => setSimOpen(true)} />
