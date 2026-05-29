@@ -13,14 +13,14 @@ const services = [
   {
     icon: Plane,
     title: 'DRONE PROJECTS',
-    desc: 'Aerial mapping, inspections, surveying, photography & custom UAV deployments for enterprise and government clients.',
+    desc: 'Infrastructure inspection, geospatial mapping, precision agriculture, medical logistics, aerial photography, and private security solutions across Africa.',
     href: '/services',
     cta: 'Explore →',
   },
   {
     icon: GraduationCap,
     title: 'DRONE TRAINING',
-    desc: 'Beginner to advanced pilot certification programs with hands-on flight sessions and regulatory compliance modules.',
+    desc: 'RCAA-certified pilot training from beginner to advanced, plus drone maintenance, regulatory coaching, and corporate capacity building programmes.',
     href: '/training',
     cta: 'View Courses →',
   },

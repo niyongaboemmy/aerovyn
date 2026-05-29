@@ -33,35 +33,38 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://aerovyn.com'),
   title: {
-    default: 'AEROVYN — Elevating the Future of Airspace',
+    default: "AEROVYN — Africa's Skies. Africa's Data. Africa's Future.",
     template: '%s | AEROVYN',
   },
   description:
-    'Professional drone projects and certified training programs. Aerial mapping, inspections, photography, and UAV pilot certification.',
+    'AEROVYN delivers intelligent drone technology across Africa — aerial intelligence, precision operations, and certified training for the industries that power the continent.',
   keywords: [
-    'drone training',
     'drone services Africa',
+    'UAS operator Rwanda',
+    'drone training Africa',
     'UAV pilot certification',
-    'drone mapping',
-    'aerial photography',
+    'precision agriculture drone Rwanda',
+    'infrastructure inspection drone',
+    'geospatial mapping drone',
+    'digital sovereignty Africa',
   ],
   openGraph: {
-    title: 'AEROVYN — Elevating the Future of Airspace',
-    description: 'Professional Drone Projects & Certified Training Programs',
+    title: "AEROVYN — Africa's Skies. Africa's Data. Africa's Future.",
+    description: 'AEROVYN deploys intelligent drone technology across Africa — delivering precision, speed, and sovereignty to the industries that power the continent.',
     type: 'website',
     images: [
       {
         url: '/api/og',
         width: 1200,
         height: 630,
-        alt: 'AEROVYN — Elevating the Future of Airspace',
+        alt: "AEROVYN — Africa's Skies. Africa's Data. Africa's Future.",
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AEROVYN — Elevating the Future of Airspace',
-    description: 'Professional Drone Projects & Certified Training Programs',
+    title: "AEROVYN — Africa's Skies. Africa's Data. Africa's Future.",
+    description: 'AEROVYN deploys intelligent drone technology across Africa — delivering precision, speed, and sovereignty to the industries that power the continent.',
     images: ['/api/og'],
   },
 }

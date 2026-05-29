@@ -19,7 +19,7 @@ export const posts: Post[] = [
     tags: ['Regulations', 'Africa', 'Compliance', 'CAA'],
     readTime: '6 min read',
     publishedAt: '2026-05-10',
-    author: { name: 'Emmanuel K.', role: 'Chief Operations Officer', initials: 'EK' },
+    author: { name: 'Jean Claude Tuyisenge', role: 'Founder & Managing Director', initials: 'JT' },
     body: [
       'The regulatory landscape for drone operations in East Africa has evolved significantly over the past 18 months. Rwanda, Kenya, Uganda, and Tanzania have all published updated civil aviation authority frameworks that affect how commercial UAV operators plan and execute missions.',
       'Rwanda\'s Civil Aviation Authority (RCAA) introduced a three-tier permit system in Q1 2026. Tier 1 covers recreational flights below 120m in uncontrolled airspace. Tier 2 covers commercial operations with a standard permit valid for 12 months. Tier 3 covers Beyond Visual Line of Sight (BVLOS) flights, which now require a dedicated operational authorisation and a demonstrated safety case.',
@@ -36,7 +36,7 @@ export const posts: Post[] = [
     tags: ['Agriculture', 'NDVI', 'Precision Farming', 'Technology'],
     readTime: '8 min read',
     publishedAt: '2026-04-22',
-    author: { name: 'Sarah K.', role: 'Head of Agricultural Services', initials: 'SK' },
+    author: { name: 'Pierre Gatama', role: 'Co-Founder & Director', initials: 'PG' },
     body: [
       'NDVI — the Normalised Difference Vegetation Index — has been used in satellite remote sensing since the 1970s. What has changed in the last three years is the democratisation of the technology: multispectral sensors that once cost $50,000 now ship as purpose-built drones for under $8,000, and the processing software has become fast enough to deliver field-level insights within hours of a flight.',
       'The core principle is elegantly simple. Healthy plants absorb red light and reflect near-infrared (NIR) light strongly. Stressed or dying vegetation does the opposite. By comparing the ratio of reflected red to NIR using a multispectral camera, agronomists can produce a colour-coded map showing exactly where a field\'s health is declining — before the damage becomes visible to the naked eye.',
@@ -53,7 +53,7 @@ export const posts: Post[] = [
     tags: ['Photography', 'Equipment', 'DJI', 'Cameras'],
     readTime: '7 min read',
     publishedAt: '2026-04-05',
-    author: { name: 'David O.', role: 'Lead Aerial Cinematographer', initials: 'DO' },
+    author: { name: 'Jean Claude Tuyisenge', role: 'Founder & Managing Director', initials: 'JT' },
     body: [
       'The aerial photography market has matured to the point where even entry-level consumer drones can produce imagery that would have required a helicopter 10 years ago. But for professional commercial work — real estate, broadcast, events, and architectural documentation — the difference between a consumer and professional platform is significant.',
       'Sensor size is the single most important variable. The DJI Inspire 3 with a full-frame 8K sensor delivers 14 stops of dynamic range. That latitude matters enormously when shooting golden-hour cityscapes where you need to retain shadow detail in the street and highlight detail in a bright sky simultaneously. The DJI Mini 4 Pro, by contrast, offers a 1/1.3-inch sensor — excellent for content creation, but limited in challenging lighting.',
@@ -70,7 +70,7 @@ export const posts: Post[] = [
     tags: ['Training', 'Certification', 'Rwanda', 'RCAA'],
     readTime: '10 min read',
     publishedAt: '2026-03-18',
-    author: { name: 'Emmanuel K.', role: 'Chief Operations Officer', initials: 'EK' },
+    author: { name: 'Jean Claude Tuyisenge', role: 'Founder & Managing Director', initials: 'JT' },
     body: [
       'Rwanda has one of the most streamlined UAV pilot certification processes in Africa, and the Rwanda Civil Aviation Authority has made significant investments in making the pathway accessible to both local and international applicants. This guide covers the complete process as of Q1 2026.',
       'The first step is completing a RCAA-approved ground school programme. The theory examination covers air law, meteorology, navigation, UAV systems, human factors, and emergency procedures. AEROVYN\'s Beginner Certification course covers the full ground school curriculum and prepares students for the multiple-choice RCAA theory examination in 3 intensive days.',
@@ -87,7 +87,7 @@ export const posts: Post[] = [
     tags: ['BVLOS', 'Industry', 'Logistics', 'Future'],
     readTime: '9 min read',
     publishedAt: '2026-02-28',
-    author: { name: 'Sarah K.', role: 'Head of Agricultural Services', initials: 'SK' },
+    author: { name: 'Pierre Gatama', role: 'Co-Founder & Director', initials: 'PG' },
     body: [
       'In April 2019, Zipline launched the world\'s first national-scale drone delivery network from its distribution hub in Muhanga, Rwanda — delivering blood and medical supplies to rural hospitals across the country. That operation, which is now delivering hundreds of packages per day across multiple countries, is the world\'s most advanced proof point for Beyond Visual Line of Sight (BVLOS) commercial drone operations.',
       'BVLOS operations — in which the drone flies beyond the operator\'s direct line of sight — are technically and regulatorily the most complex category of UAV work. The safety case requires reliable detect-and-avoid systems, redundant communication links, robust weather monitoring, and a demonstrated safety management system that satisfies aviation authorities.',

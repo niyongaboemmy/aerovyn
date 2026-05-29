@@ -5,8 +5,8 @@ export const runtime = 'edge'
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl
-  const title = searchParams.get('title') ?? 'Elevating the Future of Airspace'
-  const sub = searchParams.get('sub') ?? 'Professional Drone Projects & Certified Training'
+  const title = searchParams.get('title') ?? "Africa's Skies. Africa's Data. Africa's Future."
+  const sub = searchParams.get('sub') ?? 'Intelligent drone technology across Africa — precision, speed, and sovereignty.'
 
   return new ImageResponse(
     (

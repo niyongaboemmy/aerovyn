@@ -3,11 +3,11 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Founded in Kigali in 2020, AEROVYN brings professional-grade UAV operations and pilot training to Africa\'s most demanding environments.',
+    "AEROVYN LTD — incorporated in Kigali, Rwanda in 2026, delivering intelligent drone technology and aerial intelligence across Africa.",
   openGraph: {
     title: 'About AEROVYN',
     description:
-      'Founded in Kigali in 2020, AEROVYN combines precision drone operations with structured training programmes built for Africa.',
+      "Founded by Jean Claude Tuyisenge, AEROVYN is Africa's sovereign drone technology company — operating across Rwanda and expanding continent-wide.",
     type: 'profile',
   },
 }

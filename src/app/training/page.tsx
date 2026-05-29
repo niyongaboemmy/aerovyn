@@ -80,9 +80,9 @@ const courses = [
 ]
 
 const instructors = [
-  { initials: 'EK', name: 'Emmanuel K.', role: 'Chief Operations Officer', exp: '8 years UAV operations', accent: '#00F5C4' },
-  { initials: 'SK', name: 'Sarah K.', role: 'Head of Agricultural Services', exp: '5 years precision agriculture', accent: '#F5C400' },
-  { initials: 'DO', name: 'David O.', role: 'Lead Aerial Cinematographer', exp: '6 years broadcast & events', accent: '#4D7CF5' },
+  { initials: 'JT', name: 'Jean Claude Tuyisenge', role: 'Founder & Managing Director', exp: 'Aviation innovator and founder of AEROVYN. Expert in drone operations, embedded systems, and African education technology.', accent: '#00F5C4' },
+  { initials: 'PG', name: 'Pierre Gatama', role: 'Co-Founder & Director', exp: 'Co-founder of AEROVYN, bringing strategic leadership and operational expertise to our training and expansion programmes.', accent: '#4D7CF5' },
+  { initials: 'OT', name: 'AEROVYN Operations Team', role: 'Certified Field Instructors', exp: 'Our certified pilot instructors hold RCAA and DJI authorizations with hands-on field experience across Rwanda and East Africa.', accent: '#F5C400' },
 ]
 
 const certifications = [
