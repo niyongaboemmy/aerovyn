@@ -347,6 +347,67 @@ export default function TrainingPage() {
         </div>
       </PageHero>
 
+      {/* ── Simulator CTA ──────────────────────────────────────────── */}
+      <section className="px-4 pt-12 pb-0 sm:px-6 lg:pt-14">
+        <div className="mx-auto max-w-7xl">
+          <Link
+            href="/simulator"
+            className="group relative flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden rounded-2xl px-8 py-8 sm:py-7 transition-all duration-300 hover:shadow-[0_0_48px_rgba(0,245,196,0.12)]"
+            style={{
+              background: "linear-gradient(135deg, rgba(0,245,196,0.06) 0%, rgba(0,245,196,0.02) 100%)",
+              border: "1px solid rgba(0,245,196,0.18)",
+            }}
+          >
+            {/* Animated glow orb */}
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-40"
+              style={{ background: "#00F5C4" }}
+            />
+            <div className="relative flex items-center gap-5">
+              {/* Icon */}
+              <div
+                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-2xl"
+                style={{
+                  background: "rgba(0,245,196,0.08)",
+                  border: "1px solid rgba(0,245,196,0.25)",
+                  fontFamily: "var(--font-orbitron)",
+                  color: "#00F5C4",
+                }}
+              >
+                ◈
+              </div>
+              <div>
+                <p
+                  className="mb-0.5 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]"
+                  style={{ fontFamily: "var(--font-orbitron)" }}
+                >
+                  Interactive · Free
+                </p>
+                <h3
+                  className="text-lg font-black tracking-wide text-white sm:text-xl"
+                  style={{ fontFamily: "var(--font-orbitron)" }}
+                >
+                  FLIGHT SIMULATOR
+                </h3>
+                <p className="mt-1 text-sm text-[#6B7A8D]">
+                  Experience drone piloting with real HUD instruments, live telemetry, voice alerts, and multi-mission gameplay.
+                </p>
+              </div>
+            </div>
+            <div
+              className="relative shrink-0 rounded-xl px-7 py-3 text-sm font-bold text-[#0A0B0D] transition-all duration-300 group-hover:shadow-[0_0_24px_rgba(0,245,196,0.5)]"
+              style={{
+                background: "#00F5C4",
+                fontFamily: "var(--font-orbitron)",
+                letterSpacing: "0.08em",
+              }}
+            >
+              LAUNCH SIMULATOR →
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* ── Course list ────────────────────────────────────────────── */}
       <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-7xl">

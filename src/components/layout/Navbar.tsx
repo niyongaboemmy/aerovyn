@@ -82,8 +82,15 @@ export function Navbar() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/simulator"
+              className="flex items-center gap-1.5 rounded-md border border-[rgba(0,245,196,0.22)] px-4 py-2 text-xs font-semibold text-[#00F5C4] transition-all duration-300 hover:border-[rgba(0,245,196,0.5)] hover:bg-[rgba(0,245,196,0.06)] hover:shadow-[0_0_16px_rgba(0,245,196,0.15)]"
+              style={{ fontFamily: "var(--font-orbitron)", letterSpacing: "0.08em" }}
+            >
+              <span className="text-[10px]">◈</span> SIMULATOR
+            </Link>
             <Link
               href="/contact"
               className="rounded-md border border-[rgba(0,245,196,0.5)] px-5 py-2 text-sm font-medium text-[#00F5C4] transition-all duration-300 hover:bg-[rgba(0,245,196,0.08)] hover:shadow-[0_0_20px_rgba(0,245,196,0.2)]"
@@ -169,12 +176,31 @@ export function Navbar() {
               </li>
             ))}
 
-            {/* Contact CTA */}
+            {/* Simulator CTA */}
             <li
-              className="mt-6 transition-all duration-300"
+              className="mt-4 transition-all duration-300"
               style={{
                 transform: menuOpen ? "translateX(0)" : "translateX(40px)",
                 transitionDelay: menuOpen ? `${navLinks.length * 55}ms` : "0ms",
+                opacity: menuOpen ? 1 : 0,
+              }}
+            >
+              <Link
+                href="/simulator"
+                className="inline-flex items-center gap-2 rounded-md border border-[rgba(0,245,196,0.22)] px-6 py-3 text-xs font-semibold text-[#00F5C4] transition-all duration-300 hover:bg-[rgba(0,245,196,0.06)]"
+                style={{ fontFamily: "var(--font-orbitron)", letterSpacing: "0.1em" }}
+                onClick={() => setMenuOpen(false)}
+              >
+                ◈ FLIGHT SIMULATOR
+              </Link>
+            </li>
+
+            {/* Contact CTA */}
+            <li
+              className="mt-2 transition-all duration-300"
+              style={{
+                transform: menuOpen ? "translateX(0)" : "translateX(40px)",
+                transitionDelay: menuOpen ? `${(navLinks.length + 1) * 55}ms` : "0ms",
                 opacity: menuOpen ? 1 : 0,
               }}
             >
@@ -194,7 +220,7 @@ export function Navbar() {
             style={{
               transform: menuOpen ? "translateX(0)" : "translateX(40px)",
               transitionDelay: menuOpen
-                ? `${(navLinks.length + 1) * 55}ms`
+                ? `${(navLinks.length + 2) * 55}ms`
                 : "0ms",
               opacity: menuOpen ? 1 : 0,
             }}

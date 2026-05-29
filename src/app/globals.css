@@ -245,6 +245,12 @@ body {
   50%       { opacity: 0.8; }
 }
 
+/* ─── Simulator standalone page ─────────────────────────────────────────── */
+@keyframes sim-load-bar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
 /* ─── Pilot Simulation Modal ─────────────────────────────────────────────── */
 @keyframes glitch-shift {
   0%   { transform: skewX(0deg);    filter: saturate(1); }

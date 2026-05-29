@@ -17,6 +17,7 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
+  distDir: '.next-dev',
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 30,
