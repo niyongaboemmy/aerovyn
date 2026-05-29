@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { projects } from '@/data/projects'
 import { PortfolioCard } from '@/components/portfolio/PortfolioCard'
 import { Search } from 'lucide-react'
+import { PageHero } from '@/components/layout/PageHero'
 
 type Category = 'All' | 'Mapping' | 'Photography' | 'Agriculture' | 'Industrial' | 'Events'
 const CATEGORIES: Category[] = ['All', 'Mapping', 'Photography', 'Agriculture', 'Industrial', 'Events']
@@ -33,58 +34,30 @@ export default function ProjectsPage() {
     )
   })
 
-  const featuredProject = projects[0]
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
 
       {/* ── Hero ── */}
-      <div className="relative overflow-hidden pt-20 pb-16 sm:pt-28 sm:pb-20">
-        {/* Background photo from first project */}
-        {featuredProject.image && (
-          <Image
-            src={featuredProject.image}
-            alt="Projects"
-            fill
-            className="object-cover"
-            style={{ opacity: 0.12 }}
-            sizes="100vw"
-            priority
-          />
-        )}
-        <div className="absolute inset-0 grid-bg opacity-20" />
-        <div className="absolute inset-x-0 bottom-0 h-28" style={{ background: 'linear-gradient(to top, var(--bg-base), transparent)' }} />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
-            Our Work
-          </p>
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h1 className="text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
-                PROJECTS
-              </h1>
-              <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#5A6A7E] sm:text-base">
-                Real deployments, real outcomes — from infrastructure surveys across Rwanda to precision agriculture and urban photography.
-              </p>
+      <PageHero
+        label="Our Work"
+        title="PROJECTS"
+        description="Real deployments, real outcomes — from infrastructure surveys across Rwanda to precision agriculture and urban photography."
+        image="/images/projects/lake-kivu-aerial.jpg"
+      >
+        <div className="flex gap-6">
+          {[
+            { val: `${projects.length}+`, label: 'Projects' },
+            { val: '5', label: 'Categories' },
+            { val: '10+', label: 'Countries' },
+          ].map(({ val, label }) => (
+            <div key={label} className="text-center">
+              <p className="text-2xl font-black text-white" style={{ fontFamily: 'var(--font-orbitron)' }}>{val}</p>
+              <p className="text-[10px] uppercase tracking-widest text-[#3D4A58]" style={{ fontFamily: 'var(--font-orbitron)' }}>{label}</p>
             </div>
-
-            {/* Stats strip */}
-            <div className="flex gap-6 shrink-0">
-              {[
-                { val: `${projects.length}+`, label: 'Projects' },
-                { val: '5', label: 'Categories' },
-                { val: '10+', label: 'Countries' },
-              ].map(({ val, label }) => (
-                <div key={label} className="text-center">
-                  <p className="text-2xl font-black text-white" style={{ fontFamily: 'var(--font-orbitron)' }}>{val}</p>
-                  <p className="text-[10px] uppercase tracking-widest text-[#3D4A58]" style={{ fontFamily: 'var(--font-orbitron)' }}>{label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-      </div>
+      </PageHero>
 
       {/* ── Filter + Search bar ── */}
       <div className="sticky top-16 z-20 border-b border-[rgba(255,255,255,0.06)] bg-[rgba(10,11,13,0.92)] backdrop-blur-xl">

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { PartnersSlider } from '@/components/home/PartnersSlider'
+import { PageHero } from '@/components/layout/PageHero'
 
 const team = [
   {
@@ -47,36 +48,21 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <div className="grid-bg px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-24 md:pb-20 md:pt-28">
-        <div className="mx-auto max-w-7xl grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12">
-          <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
-              Our Story
-            </p>
-            <h1 className="mb-6 text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
-              ABOUT
-            </h1>
-            <p className="max-w-lg text-base leading-relaxed text-[#6B7A8D] sm:text-lg">
-              AEROVYN was born from a conviction: that Africa should not merely consume technology — Africa should own it, build it, and export it to the world.
-            </p>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-[#6B7A8D]">
-              Founded by Jean Claude Tuyisenge — a technology entrepreneur, educator, and aviation innovator based in Kigali — AEROVYN brings together two decades of experience in education technology, embedded systems, and drone operations into a single, focused mission: aerial intelligence for African sovereignty.
-            </p>
-            <p className="mt-4 max-w-lg text-base leading-relaxed text-[#6B7A8D]">
-              From Rwanda&apos;s hills to Nigeria&apos;s economic corridors, AEROVYN is building the infrastructure for a smarter, safer, and more connected continent — one flight at a time.
-            </p>
-          </div>
-          {/* Stats grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map(({ value, label }) => (
-              <div key={label} className="rounded-2xl p-6 text-center" style={{ background: 'rgba(0,245,196,0.04)', border: '1px solid rgba(0,245,196,0.15)' }}>
-                <p className="text-4xl font-black text-[#00F5C4] mb-1" style={{ fontFamily: 'var(--font-orbitron)' }}>{value}</p>
-                <p className="text-xs text-[#6B7A8D] uppercase tracking-wider">{label}</p>
-              </div>
-            ))}
-          </div>
+      <PageHero
+        label="Our Story"
+        title="ABOUT"
+        description="AEROVYN was born from a conviction: that Africa should not merely consume technology — Africa should own it, build it, and export it to the world."
+        image="/images/projects/kigali-aerial.jpg"
+      >
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {stats.map(({ value, label }) => (
+            <div key={label} className="rounded-xl p-4 text-center" style={{ background: 'rgba(0,245,196,0.04)', border: '1px solid rgba(0,245,196,0.15)' }}>
+              <p className="text-2xl font-black text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>{value}</p>
+              <p className="mt-1 text-[10px] text-[#6B7A8D] uppercase tracking-wider">{label}</p>
+            </div>
+          ))}
         </div>
-      </div>
+      </PageHero>
 
       {/* Mission + values */}
       <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>

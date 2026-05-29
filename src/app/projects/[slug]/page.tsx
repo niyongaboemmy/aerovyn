@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import Image from 'next/image'
 import type { Metadata } from 'next'
 import { projects, getProjectBySlug, getRelatedProjects } from '@/data/projects'
 import { PortfolioCard } from '@/components/portfolio/PortfolioCard'
+import { PageHero } from '@/components/layout/PageHero'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -28,57 +28,19 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
-      {/* Hero banner */}
-      <div
-        className="relative pt-24 pb-16 px-6 overflow-hidden"
-        style={{ background: project.gradient }}
+      {/* Hero */}
+      <PageHero
+        label={project.category}
+        title={project.title}
+        description={project.summary}
+        image={project.image}
       >
-        {/* Project image as hero background */}
-        {project.image && (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover"
-            style={{ opacity: 0.25 }}
-            sizes="100vw"
-            priority
-          />
-        )}
-        <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="relative mx-auto max-w-6xl">
-          {/* Breadcrumb */}
-          <nav className="mb-6 flex items-center gap-2 text-xs text-[#6B7A8D]" aria-label="Breadcrumb">
-            <Link href="/projects" className="hover:text-white transition-colors">Projects</Link>
-            <span>/</span>
-            <span className="text-white">{project.title}</span>
-          </nav>
-
-          {/* Category badge */}
-          <span
-            className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.3em] px-3 py-1 rounded-sm"
-            style={{
-              background: `${project.accent}20`,
-              border: `1px solid ${project.accent}40`,
-              color: project.accent,
-              fontFamily: 'var(--font-orbitron)',
-            }}
-          >
-            {project.category}
-          </span>
-
-          <h1
-            className="text-3xl font-black text-white leading-tight md:text-5xl max-w-3xl"
-            style={{ fontFamily: 'var(--font-orbitron)' }}
-          >
-            {project.title}
-          </h1>
-
-          <p className="mt-4 text-[#C4CDD8] text-lg max-w-2xl leading-relaxed">
-            {project.summary}
-          </p>
-        </div>
-      </div>
+        <nav className="flex items-center gap-2 text-xs text-[#6B7A8D]" aria-label="Breadcrumb">
+          <Link href="/projects" className="hover:text-white transition-colors">Projects</Link>
+          <span>/</span>
+          <span className="text-white">{project.title}</span>
+        </nav>
+      </PageHero>
 
       {/* Body */}
       <div className="mx-auto max-w-6xl px-6 py-14">

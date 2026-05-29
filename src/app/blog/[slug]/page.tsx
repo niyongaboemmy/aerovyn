@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { posts, getPostBySlug, getRelatedPosts } from '@/data/posts'
 import { BlogCard } from '@/components/blog/BlogCard'
+import { PageHero } from '@/components/layout/PageHero'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -44,56 +45,29 @@ export default async function BlogArticlePage({ params }: Props) {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Article hero */}
-      <div className="grid-bg pt-28 pb-14 px-6 border-b border-[rgba(255,255,255,0.06)]">
-        <div className="mx-auto max-w-3xl">
-          {/* Breadcrumb */}
-          <nav className="mb-6 flex items-center gap-2 text-xs text-[#6B7A8D]" aria-label="Breadcrumb">
+      <PageHero label={post.category} title={post.title}>
+        <div className="flex flex-wrap items-center gap-4 text-sm text-[#6B7A8D]">
+          <nav className="flex items-center gap-2 text-xs" aria-label="Breadcrumb">
             <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
             <span>/</span>
-            <span className="text-white truncate">{post.title}</span>
+            <span className="text-white truncate">{post.category}</span>
           </nav>
-
-          {/* Category */}
-          <span
-            className="mb-5 inline-block text-[10px] font-semibold uppercase tracking-[0.3em] px-3 py-1 rounded-sm"
-            style={{
-              background: `${accent}18`,
-              border: `1px solid ${accent}30`,
-              color: accent,
-              fontFamily: 'var(--font-orbitron)',
-            }}
-          >
-            {post.category}
-          </span>
-
-          {/* Title */}
-          <h1 className="text-3xl font-black text-white leading-tight mb-5 md:text-4xl lg:text-5xl">
-            {post.title}
-          </h1>
-
-          {/* Meta row */}
-          <div className="flex flex-wrap items-center gap-4 text-sm text-[#6B7A8D]">
-            {/* Author avatar */}
-            <div className="flex items-center gap-2">
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
-                style={{ background: `${accent}20`, color: accent, fontFamily: 'var(--font-orbitron)' }}
-              >
-                {post.author.initials}
-              </div>
-              <div>
-                <span className="text-white font-medium">{post.author.name}</span>
-                <span className="mx-1.5 text-[#6B7A8D]">·</span>
-                <span>{post.author.role}</span>
-              </div>
+          <span className="hidden sm:block text-[#3a4555]">|</span>
+          <div className="flex items-center gap-2">
+            <div
+              className="w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0"
+              style={{ background: `${accent}20`, color: accent, fontFamily: 'var(--font-orbitron)' }}
+            >
+              {post.author.initials}
             </div>
-            <span className="hidden sm:block text-[#3a4555]">|</span>
-            <span>{formatDate(post.publishedAt)}</span>
-            <span className="text-[#3a4555]">|</span>
-            <span>{post.readTime}</span>
+            <span className="text-white font-medium">{post.author.name}</span>
           </div>
+          <span className="text-[#3a4555]">|</span>
+          <span>{formatDate(post.publishedAt)}</span>
+          <span className="text-[#3a4555]">|</span>
+          <span>{post.readTime}</span>
         </div>
-      </div>
+      </PageHero>
 
       {/* Article body */}
       <div className="mx-auto max-w-3xl px-6 py-14">

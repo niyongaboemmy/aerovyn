@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import { posts } from "@/data/posts";
 import { BlogCard } from "@/components/blog/BlogCard";
+import { PageHero } from "@/components/layout/PageHero";
 
 export default function BlogPage() {
   const [query, setQuery] = useState("");
@@ -35,52 +36,28 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg-base)" }}>
-      {/* Hero bar */}
-      <div className="grid-bg px-4 pb-10 pt-20 sm:px-6 sm:pb-14 sm:pt-24 md:pb-14 md:pt-28">
-        <div className="mx-auto max-w-7xl">
-          <p
-            className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]"
-            style={{ fontFamily: "var(--font-orbitron)" }}
+      {/* Hero */}
+      <PageHero label="Insights & Updates" title="BLOG" image="/images/home/drone-projects.jpg">
+        <div className="relative w-full max-w-xs sm:max-w-sm">
+          <svg
+            aria-hidden="true"
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B7A8D]"
+            width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
           >
-            Insights &amp; Updates
-          </p>
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <h1
-              className="text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl"
-              style={{ fontFamily: "var(--font-orbitron)" }}
-            >
-              BLOG
-            </h1>
-            {/* Search */}
-            <div className="relative w-full max-w-xs sm:max-w-sm">
-              <svg
-                aria-hidden="true"
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B7A8D]"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <label htmlFor="blog-search" className="sr-only">
-                Search articles
-              </label>
-              <input
-                id="blog-search"
-                type="search"
-                placeholder="Search articles…"
-                value={query}
-                onChange={(e) => handleSearch(e.target.value)}
-                className="w-full rounded-lg border border-[rgba(255,255,255,0.1)] bg-[#111318] pl-9 pr-4 py-2.5 text-sm text-white placeholder-[#6B7A8D] focus:border-[rgba(0,245,196,0.4)] focus:outline-none transition-colors"
-              />
-            </div>
-          </div>
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <label htmlFor="blog-search" className="sr-only">Search articles</label>
+          <input
+            id="blog-search"
+            type="search"
+            placeholder="Search articles…"
+            value={query}
+            onChange={(e) => handleSearch(e.target.value)}
+            className="w-full rounded-lg border border-[rgba(255,255,255,0.1)] bg-[#111318] pl-9 pr-4 py-2.5 text-sm text-white placeholder-[#6B7A8D] focus:border-[rgba(0,245,196,0.4)] focus:outline-none transition-colors"
+          />
         </div>
-      </div>
+      </PageHero>
 
       <div className="mx-auto max-w-7xl space-y-12 py-10 sm:py-14 sm:space-y-14">
         {filtered.length === 0 ? (

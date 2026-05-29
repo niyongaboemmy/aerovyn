@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Zap, Sprout, Building2, HeartPulse, Landmark, Mountain, Shield, GraduationCap, Star } from 'lucide-react'
+import { PageHero } from '@/components/layout/PageHero'
 
 const industries = [
   {
@@ -71,19 +72,12 @@ export default function IndustriesPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <div className="grid-bg px-4 pb-12 pt-20 sm:px-6 sm:pb-16 sm:pt-24 md:pb-20 md:pt-28">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
-            Sectors We Power
-          </p>
-          <h1 className="mb-6 text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
-            INDUSTRIES
-          </h1>
-          <p className="max-w-2xl text-base text-[#6B7A8D] sm:text-lg">
-            AEROVYN&apos;s solutions span nine critical sectors driving Africa&apos;s development agenda — from the fields that feed the continent to the infrastructure that powers its future.
-          </p>
-        </div>
-      </div>
+      <PageHero
+        label="Sectors We Power"
+        title="INDUSTRIES"
+        description="AEROVYN's solutions span nine critical sectors driving Africa's development agenda — from the fields that feed the continent to the infrastructure that powers its future."
+        image="/images/projects/mapping-infrastructure.jpg"
+      />
 
       {/* Industries Grid */}
       <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">

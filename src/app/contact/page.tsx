@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { z } from 'zod'
 import { CheckCircle2, Mail, Phone, MapPin, ChevronRight, AlertCircle } from 'lucide-react'
+import { PageHero } from '@/components/layout/PageHero'
 
 type Intent = 'project' | 'training' | 'partnership' | null
 
@@ -106,19 +107,11 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
       {/* Hero */}
-      <div className="grid-bg px-4 pb-12 pt-20 sm:px-6 sm:pb-14 sm:pt-24 md:pb-16 md:pt-28">
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
-            Get in Touch
-          </p>
-          <h1 className="mb-4 text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
-            CONTACT
-          </h1>
-          <p className="max-w-xl text-base text-[#6B7A8D] sm:text-lg">
-            Tell us what you need. We respond within one business day.
-          </p>
-        </div>
-      </div>
+      <PageHero
+        label="Get in Touch"
+        title="CONTACT"
+        description="Tell us what you need. We respond within one business day."
+      />
 
       {/* Content */}
       <div className="px-4 py-12 sm:px-6 sm:py-16">
