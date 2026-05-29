@@ -4,57 +4,42 @@ import Link from 'next/link'
 
 const team = [
   {
-    initials: 'EK',
-    name: 'Emmanuel K.',
-    role: 'Chief Operations Officer',
-    bio: 'Former RCAA examiner with 8 years of commercial UAV operations across East Africa. Holds RCAA RPL and KCAA certification.',
+    initials: 'JT',
+    name: 'Jean Claude Tuyisenge',
+    role: 'Founder & Managing Director',
+    bio: 'Entrepreneur, educator, and aviation innovator. Founder of New Generation Academy (NGA) — Rwanda\'s only NESA-accredited private coding academy. Board member of Edify International. Holds expertise in aviation technology, embedded systems, and African education.',
     accent: '#00F5C4',
   },
   {
-    initials: 'SK',
-    name: 'Sarah K.',
-    role: 'Head of Agricultural Services',
-    bio: 'Agronomist-turned-UAV specialist. Designed AEROVYN\'s multispectral survey methodology now used across 12 cooperative programmes.',
-    accent: '#F5C400',
-  },
-  {
-    initials: 'DO',
-    name: 'David O.',
-    role: 'Lead Aerial Cinematographer',
-    bio: 'Broadcast camera operator for 10 years before transitioning to aerial. Credits include regional television and international campaigns.',
+    initials: 'PG',
+    name: 'Pierre Gatama',
+    role: 'Co-Founder & Director',
+    bio: 'Seasoned professional and co-founder of AEROVYN, bringing operational expertise and strategic leadership to the company\'s pan-African expansion plans.',
     accent: '#4D7CF5',
-  },
-  {
-    initials: 'AM',
-    name: 'Alice M.',
-    role: 'Head of Training',
-    bio: 'Certified flight instructor and curriculum designer. Developed AEROVYN\'s three-tier training framework adopted by 500+ graduates.',
-    accent: '#C400F5',
   },
 ]
 
 const timeline = [
-  { year: '2020', event: 'AEROVYN founded in Kigali by Emmanuel K. and Sarah K. with two drones and a vision for data-driven operations.' },
-  { year: '2021', event: 'First government contract — aerial survey of 40km road corridor for Rwanda Infrastructure Authority.' },
-  { year: '2022', event: 'Training programme launched. First cohort of 20 pilots certified under RCAA-approved curriculum.' },
-  { year: '2023', event: 'Agricultural services division established. Bugesera cooperative project covers 2,400 hectares across one season.' },
-  { year: '2024', event: 'Expanded to Kenya operations. Drone fleet grows to 12 platforms across 5 categories.' },
-  { year: '2025', event: 'Regional expansion — Uganda operations commence. 500th pilot certified. Fleet includes LiDAR and thermal platforms.' },
-  { year: '2026', event: 'BVLOS authorisation in active development. Corporate training programmes launched for enterprise clients.' },
+  { year: '2026', event: 'AEROVYN LTD incorporated on 31 March 2026 under Rwanda Development Board (RDB). RCAA UAS Operator Certificate (UOC) obtained.' },
+  { year: '2026', event: 'AEROVYN formally takes over the entire drone operations department of New Generation Academy (NGA) — including all equipment, ongoing contracts, active assignments, and trained personnel.' },
+  { year: '2026', event: 'Flagship national engagements commence: MINISPORTS infrastructure mapping, Bridge2Rwanda precision agriculture across 8 districts, Rwanda TVET Board national schools survey, and Rwanda Energy Group infrastructure pilot.' },
+  { year: '2026', event: 'Nigeria market entry in progress — AEROVYN\'s first pan-African expansion outside Rwanda.' },
 ]
 
 const values = [
-  { title: 'Precision First', desc: 'Every mission is planned and executed to the highest accuracy standard. We don\'t approximate.' },
-  { title: 'Africa-Built', desc: 'Designed for African terrain, airspace, and operating conditions — not adapted from elsewhere.' },
-  { title: 'Safety Above All', desc: 'Zero-incident operations record. Safety management runs through every layer of our organisation.' },
-  { title: 'Knowledge Transfers', desc: 'Every project is also a training opportunity. We build local capacity, not dependency.' },
+  { title: 'African Sovereignty', desc: 'We champion homegrown innovation, local capacity-building, and African ownership of digital infrastructure. Every service we deliver is a step toward continental self-determination.' },
+  { title: 'Precision & Excellence', desc: 'We hold ourselves to the highest standards of accuracy, professionalism, and technical quality — because in our industry, precision is not optional, it is the mission.' },
+  { title: 'Integrity Across Borders', desc: 'We operate transparently, ethically, and in full compliance with regulatory frameworks in every country we serve — earning trust one flight at a time.' },
+  { title: 'Innovation at Altitude', desc: 'We relentlessly explore emerging technologies, push the frontiers of aerial intelligence, and adapt our solutions to the unique challenges of Africa\'s diverse landscapes and markets.' },
+  { title: 'Partnership & Inclusion', desc: 'We build lasting partnerships with governments, development organizations, private enterprises, and local communities — because sustainable impact is always co-created.' },
+  { title: 'Purpose-Driven Impact', desc: 'Every drone we fly, every dataset we deliver, and every training we conduct serves a greater purpose: a stronger, smarter, more connected Africa.' },
 ]
 
 const stats = [
-  { value: '500+', label: 'Missions Completed' },
-  { value: '500+', label: 'Pilots Certified' },
+  { value: '6,000+', label: 'Missions Completed' },
+  { value: '2,000+', label: 'Flight Hours' },
   { value: '10+', label: 'Countries Reached' },
-  { value: '6', label: 'Years Operating' },
+  { value: '1+', label: 'Years Operating' },
 ]
 
 export default function AboutPage() {
@@ -71,10 +56,13 @@ export default function AboutPage() {
               ABOUT
             </h1>
             <p className="max-w-lg text-base leading-relaxed text-[#6B7A8D] sm:text-lg">
-              AEROVYN was built to answer a simple question: what happens when professional-grade drone capability meets Africa&apos;s most demanding operational environments?
+              AEROVYN was born from a conviction: that Africa should not merely consume technology — Africa should own it, build it, and export it to the world.
             </p>
             <p className="mt-4 max-w-lg text-base leading-relaxed text-[#6B7A8D]">
-              We started in Kigali in 2020 with two drones and a conviction that precision aerial data could transform how infrastructure, agriculture, and media projects are delivered across the continent.
+              Founded by Jean Claude Tuyisenge — a technology entrepreneur, educator, and aviation innovator based in Kigali — AEROVYN brings together two decades of experience in education technology, embedded systems, and drone operations into a single, focused mission: aerial intelligence for African sovereignty.
+            </p>
+            <p className="mt-4 max-w-lg text-base leading-relaxed text-[#6B7A8D]">
+              From Rwanda&apos;s hills to Nigeria&apos;s economic corridors, AEROVYN is building the infrastructure for a smarter, safer, and more connected continent — one flight at a time.
             </p>
           </div>
           {/* Stats grid */}
@@ -95,10 +83,13 @@ export default function AboutPage() {
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             What Drives Us
           </p>
-          <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
+          <h2 className="mb-4 text-2xl font-black tracking-wide text-white sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
             OUR VALUES
           </h2>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          <p className="mb-10 max-w-2xl text-sm text-[#6B7A8D] leading-relaxed sm:mb-12">
+            AEROVYN operates across multiple African countries, guided by values that transcend borders and unite teams, clients, and communities under a shared commitment to excellence.
+          </p>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {values.map(({ title, desc }, i) => (
               <div key={title} className="rounded-2xl p-5 md:p-6" style={{ background: 'var(--bg-elevated)', border: '1px solid rgba(255,255,255,0.07)' }}>
                 <p className="text-xs font-bold text-[#00F5C4] mb-3 opacity-60" style={{ fontFamily: 'var(--font-orbitron)' }}>0{i + 1}</p>
@@ -119,7 +110,7 @@ export default function AboutPage() {
           <h2 className="mb-10 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-12" style={{ fontFamily: 'var(--font-orbitron)' }}>
             MEET THE TEAM
           </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2">
             {team.map(({ initials, name, role, bio, accent }) => (
               <div key={name} className="group flex flex-col rounded-2xl p-5 transition-[border-color] duration-300 md:p-7" style={{ background: 'var(--bg-elevated)', border: `1px solid ${accent}20` }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = `${accent}50` }}
@@ -167,8 +158,104 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Flagship Clients */}
       <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
+            Proven at National Scale
+          </p>
+          <h2 className="mb-4 text-2xl font-black tracking-wide text-white sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
+            FLAGSHIP CLIENTS
+          </h2>
+          <p className="mb-10 max-w-2xl text-sm text-[#6B7A8D] leading-relaxed sm:mb-12">
+            AEROVYN serves Rwanda&apos;s leading national institutions and development programmes — demonstrating capacity to deliver at national scale.
+          </p>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+            {[
+              { short: 'RCAA', name: 'Rwanda Civil Aviation Authority', accent: '#00F5C4', desc: 'AEROVYN operates as a fully licensed and compliant UAS operator under RCAA oversight, ensuring every mission meets national aviation safety standards.' },
+              { short: 'MINISPORTS', name: 'Rwanda Ministry of Sports', accent: '#4D7CF5', desc: 'National project to digitalize all sports infrastructure across Rwanda — aerial mapping and documentation of stadiums, courts, and sports facilities country-wide.' },
+              { short: 'B2R', name: 'Bridge2Rwanda', accent: '#F5C400', desc: 'Aerial coverage of crops and harvests for supported farmers across 8 districts — bringing precision-agriculture intelligence directly to smallholder farming communities.' },
+              { short: 'RTB', name: 'Rwanda TVET Board', accent: '#F54D4D', desc: 'Mapping of all Technical and Vocational Education and Training (TVET) schools across Rwanda — a comprehensive national geospatial inventory of skills-development infrastructure.' },
+              { short: 'REG', name: 'Rwanda Energy Group', accent: '#00D68F', desc: 'Pilot project for the mapping and inspection of national energy infrastructure — applying aerial intelligence to power assets to improve maintenance, planning, and reliability.' },
+            ].map(({ short, name, accent, desc }) => (
+              <div key={short} className="rounded-2xl p-5 md:p-6" style={{ background: 'var(--bg-elevated)', border: `1px solid ${accent}25` }}>
+                <span className="text-xs font-black tracking-widest mb-3 block" style={{ color: accent, fontFamily: 'var(--font-orbitron)' }}>{short}</span>
+                <h3 className="text-sm font-bold text-white mb-3">{name}</h3>
+                <p className="text-sm text-[#6B7A8D] leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Partners */}
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
+            Our Ecosystem
+          </p>
+          <h2 className="mb-4 text-2xl font-black tracking-wide text-white sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
+            STRATEGIC PARTNERS
+          </h2>
+          <p className="mb-10 max-w-2xl text-sm text-[#6B7A8D] leading-relaxed sm:mb-12">
+            Our work is strengthened by a network of government institutions, development agencies, and academic partners — positioning AEROVYN at the heart of Africa&apos;s drone-powered digital future.
+          </p>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {[
+              'Ministry of ICT and Innovation (MINICT)',
+              'Luxembourg Development Agency (LuxDev)',
+              'GIZ — Deutsche Gesellschaft für Internationale Zusammenarbeit',
+              'University of Rwanda (UR)',
+              'The City of Kigali',
+              'Rwanda Space Agency (RSA)',
+              'National Land Authority (NLA)',
+              'Ministry of Local Government (MINALOC)',
+            ].map((partner) => (
+              <div
+                key={partner}
+                className="rounded-xl p-4 text-center"
+                style={{ background: 'rgba(0,245,196,0.04)', border: '1px solid rgba(0,245,196,0.12)' }}
+              >
+                <p className="text-xs font-medium text-[#C4CDD8] leading-snug">{partner}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Where We Operate */}
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">
+        <div className="mx-auto max-w-7xl">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
+            Pan-African by Design
+          </p>
+          <h2 className="mb-4 text-2xl font-black tracking-wide text-white sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
+            WHERE WE OPERATE
+          </h2>
+          <p className="mb-10 max-w-2xl text-sm text-[#6B7A8D] leading-relaxed sm:mb-12">
+            AEROVYN&apos;s operations are pan-African by design, with a clear expansion roadmap as we bring drone intelligence to more of the continent.
+          </p>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 max-w-2xl">
+            <div className="rounded-2xl p-6" style={{ background: 'rgba(0,245,196,0.05)', border: '1px solid rgba(0,245,196,0.3)' }}>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-xs font-black tracking-widest text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>RWANDA</span>
+                <span className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#0A0B0D]" style={{ background: '#00F5C4' }}>Active</span>
+              </div>
+              <p className="text-sm text-[#C4CDD8] leading-relaxed">Headquarters &amp; full operations — our home base and the foundation of our continental expansion.</p>
+            </div>
+            <div className="rounded-2xl p-6" style={{ background: 'rgba(245,196,0,0.04)', border: '1px solid rgba(245,196,0,0.25)' }}>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-xs font-black tracking-widest text-[#F5C400]" style={{ fontFamily: 'var(--font-orbitron)' }}>NIGERIA</span>
+                <span className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#0A0B0D]" style={{ background: '#F5C400' }}>Launching Soon</span>
+              </div>
+              <p className="text-sm text-[#C4CDD8] leading-relaxed">Market entry in progress — AEROVYN&apos;s first pan-African expansion outside Rwanda.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
         <div className="mx-auto max-w-7xl text-center">
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>Join Us</p>
           <h2 className="mb-4 text-2xl font-black tracking-wide text-white sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>FLY WITH AEROVYN</h2>

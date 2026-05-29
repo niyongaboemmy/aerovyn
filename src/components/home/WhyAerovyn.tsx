@@ -11,23 +11,23 @@ gsap.registerPlugin(ScrollTrigger)
 const values = [
   {
     icon: ShieldCheck,
-    title: 'Certified Instructors',
-    desc: 'All trainers hold internationally recognized UAV certifications with 5+ years of field experience.',
+    title: 'Pan-African Reach',
+    desc: 'Operating across multiple African countries with culturally aware, locally embedded teams.',
   },
   {
     icon: Cpu,
-    title: 'Real Hardware & Simulators',
-    desc: 'Train on industry-grade drones and professional flight simulators for maximum readiness.',
+    title: 'Fully Licensed & Certified',
+    desc: 'RCAA-certified UAS operator with RDB registration — compliant, credible, and accountable.',
   },
   {
     icon: Briefcase,
-    title: 'Industry-Grade Projects',
-    desc: 'Hands-on exposure to real commercial projects — mapping, agriculture, inspections, and more.',
+    title: 'End-to-End Solutions',
+    desc: 'From flight to insight — we collect, process, and deliver actionable data, not just raw footage.',
   },
   {
     icon: Users,
-    title: 'Career Support & Networking',
-    desc: 'Graduate into a thriving alumni network with job placement assistance and industry connections.',
+    title: 'Training & Capacity Building',
+    desc: "We don't just fly — we educate. Building Africa's next generation of drone professionals.",
   },
 ]
 

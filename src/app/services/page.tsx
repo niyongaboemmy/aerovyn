@@ -1,48 +1,56 @@
 'use client'
 
 import Link from 'next/link'
-import { Camera, Map, Wrench, Sprout, Star, ChevronRight, CheckCircle2 } from 'lucide-react'
+import { Map, Wrench, Sprout, Shield, Truck, GraduationCap, ChevronRight, CheckCircle2 } from 'lucide-react'
 
 const services = [
   {
-    icon: Map,
-    title: 'Aerial Mapping & Surveying',
-    slug: 'mapping',
-    accent: '#00F5C4',
-    summary: 'High-resolution orthomosaics, 3D models, LiDAR point clouds, and elevation data for infrastructure, construction, and land management.',
-    features: ['2cm GSD photogrammetry', 'LiDAR fusion surveys', '3D point clouds & DEMs', 'QGIS / AutoCAD deliverables', 'GCP-controlled accuracy'],
-  },
-  {
-    icon: Camera,
-    title: 'Aerial Photography & Video',
-    slug: 'photography',
-    accent: '#4D7CF5',
-    summary: 'Cinematic 4K/6K aerial imagery for real estate, broadcast, events, and brand campaigns — delivered colour-graded and edit-ready.',
-    features: ['Full-frame 8K sensor systems', 'Golden hour & twilight shoots', 'Live broadcast streaming', 'DaVinci colour grade', 'Same-day social cuts'],
-  },
-  {
     icon: Wrench,
-    title: 'Industrial Inspections',
+    title: 'Infrastructure Inspection',
     slug: 'inspection',
     accent: '#F54D4D',
-    summary: 'Close-proximity structural and thermal inspection of towers, pipelines, rooftops, and solar arrays — zero worker-at-height risk.',
-    features: ['4K close-proximity imaging', 'Thermal / IR camera options', 'GPS-tagged defect reports', '24-hour report turnaround', 'NDT methodology'],
+    summary: 'Rapid, non-intrusive aerial inspection of power transmission lines, telecom towers, bridges, roads, pipelines, and large-scale industrial facilities — delivering high-resolution imagery, thermal analysis, and actionable maintenance reports.',
+    features: ['Power line & telecom tower inspection', 'Thermal / IR analysis', 'GPS-tagged defect reports', '24-hour report turnaround', 'Zero worker-at-height risk'],
   },
   {
     icon: Sprout,
-    title: 'Agricultural Surveys',
+    title: 'Precision Agriculture & Crop Protection',
     slug: 'agriculture',
     accent: '#F5C400',
-    summary: 'Multispectral NDVI mapping, crop stress detection, and variable-rate prescription maps for smallholder cooperatives and commercial farms.',
-    features: ['Multispectral NDVI imaging', 'Irrigation stress mapping', 'Prescription PDF + KMZ', 'Cooperative group pricing', 'Same-season results'],
+    summary: 'From crop health monitoring using multispectral imaging to precision spraying of fertilizers and pesticides — empowering African farmers with data-driven agriculture that reduces waste and increases yield.',
+    features: ['Multispectral NDVI imaging', 'Precision spraying (fertilizers & pesticides)', 'Early disease & drought detection', 'Variable-rate prescription maps', 'Large-area coverage at speed'],
   },
   {
-    icon: Star,
-    title: 'Events & Sports Coverage',
-    slug: 'events',
+    icon: Map,
+    title: 'Geospatial Mapping & Surveys',
+    slug: 'mapping',
+    accent: '#00F5C4',
+    summary: 'Centimeter-accurate topographic surveys, 3D terrain models, volumetric calculations, and construction progress documentation for architects, engineers, developers, and urban planners.',
+    features: ['2cm GSD photogrammetry', 'LiDAR fusion surveys', '3D point clouds & DEMs', 'QGIS / AutoCAD deliverables', 'GCP-controlled accuracy'],
+  },
+  {
+    icon: Truck,
+    title: 'Medical Logistics & Emergency Delivery',
+    slug: 'medical',
+    accent: '#4D7CF5',
+    summary: 'Time-critical delivery of blood products, vaccines, medicines, and medical supplies to hospitals, clinics, and remote communities — shortening delivery times from hours to minutes and saving lives where it matters most.',
+    features: ['Blood, vaccines & medicine delivery', 'Remote community access', 'Real-time flight tracking', 'Cold-chain compatible payloads', 'Sub-30-minute delivery windows'],
+  },
+  {
+    icon: Shield,
+    title: 'Private Security & Asset Monitoring',
+    slug: 'security',
     accent: '#C400F5',
-    summary: 'End-to-end aerial production for marathons, concerts, ceremonies, and live broadcasts — from permit filing to highlight reel delivery.',
-    features: ['5-drone operational crews', 'Live TV stream integration', 'CAA permit management', '6K RAW post-production', '48h highlight delivery'],
+    summary: '24/7 aerial surveillance and asset monitoring for critical infrastructure, commercial properties, industrial sites, and protected zones — providing real-time visual intelligence and rapid incident response.',
+    features: ['24/7 perimeter surveillance', 'Real-time visual intelligence', 'Industrial & commercial site monitoring', 'Rapid incident response support', 'Complements ground security forces'],
+  },
+  {
+    icon: GraduationCap,
+    title: 'Training, Maintenance & Value-Add',
+    slug: 'training-services',
+    accent: '#00D68F',
+    summary: "Africa's drone knowledge hub — offering certified pilot training (beginner to advanced), drone maintenance services, regulatory compliance coaching, career development, and spectacular drone shows for national events and corporate ceremonies.",
+    features: ['Certified pilot training programmes', 'Drone maintenance services', 'Regulatory compliance coaching', 'Career development pathways', 'Drone shows for events & celebrations'],
   },
 ]
 

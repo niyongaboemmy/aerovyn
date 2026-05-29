@@ -3,10 +3,10 @@
 import { useCountUp } from '@/hooks/useCountUp'
 
 const stats = [
-  { target: 500, suffix: '+', label: 'Missions Completed' },
-  { target: 50, suffix: '+', label: 'Courses Available' },
-  { target: 98, suffix: '%', label: 'Success Rate' },
-  { target: 10, suffix: '+', label: 'Countries Reached' },
+  { target: 1,    suffix: '+', label: 'Years of Operations' },
+  { target: 6000, suffix: '+', label: 'Missions Completed' },
+  { target: 2000, suffix: '+', label: 'Flight Hours' },
+  { target: 10,   suffix: '+', label: 'Countries Reached' },
 ]
 
 function StatItem({ target, suffix, label }: { target: number; suffix: string; label: string }) {

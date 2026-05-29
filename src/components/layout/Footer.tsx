@@ -46,8 +46,7 @@ export function Footer() {
               <span className="text-[#00F5C4]">AERO</span>VYN
             </Link>
             <p className="text-sm leading-relaxed text-[#6B7A8D]">
-              Elevating the future of airspace through precision drone operations
-              and world-class pilot training programs.
+              Digitalizing Africa through sovereign drone technology — delivering aerial intelligence to the industries that power the continent.
             </p>
             <div className="flex items-center gap-4">
               {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -117,18 +116,18 @@ export function Footer() {
             </h3>
             <ul className="flex flex-col gap-3 text-sm text-[#6B7A8D]">
               <li>
-                <a href="mailto:hello@aerovyn.com" className="transition-colors hover:text-white">
-                  hello@aerovyn.com
+                <a href="mailto:info@aerovyn.com" className="transition-colors hover:text-white">
+                  info@aerovyn.com
                 </a>
               </li>
               <li>
-                <a href="tel:+1234567890" className="transition-colors hover:text-white">
-                  +1 (234) 567-890
+                <a href="tel:+250788301945" className="transition-colors hover:text-white">
+                  +250 788 301 945
                 </a>
               </li>
               <li className="leading-relaxed">
-                Kigali, Rwanda<br />
-                East Africa
+                Amahoro, Kimihurura, Gasabo<br />
+                Kigali, Rwanda
               </li>
             </ul>
           </div>

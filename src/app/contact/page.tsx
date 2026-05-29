@@ -92,7 +92,7 @@ export default function ContactPage() {
       setStep(3)
       setSubmitted(true)
     } catch {
-      setSubmitError('Something went wrong. Please try again or email us directly at hello@aerovyn.com.')
+      setSubmitError('Something went wrong. Please try again or email us directly at info@aerovyn.com.')
     } finally {
       setSubmitting(false)
     }
@@ -130,9 +130,9 @@ export default function ContactPage() {
                 Reach Us
               </p>
               {[
-                { icon: Mail, label: 'Email', value: 'hello@aerovyn.com' },
-                { icon: Phone, label: 'Phone', value: '+1 (234) 567-890' },
-                { icon: MapPin, label: 'Address', value: 'Kigali, Rwanda\nEast Africa' },
+                { icon: Mail, label: 'Email', value: 'info@aerovyn.com' },
+                { icon: Phone, label: 'Phone', value: '+250 788 301 945' },
+                { icon: MapPin, label: 'Address', value: 'Amahoro, Kimihurura, Gasabo\nKigali, Rwanda' },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex gap-4 mb-5">
                   <div className="shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: 'rgba(0,245,196,0.08)', border: '1px solid rgba(0,245,196,0.2)' }}>

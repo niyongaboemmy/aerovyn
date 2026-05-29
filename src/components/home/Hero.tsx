@@ -2371,12 +2371,12 @@ export function Hero() {
 
         {/* Tagline — always visible */}
         <p className="hero-sub mb-6 text-base font-bold text-white sm:text-xl md:mb-4 md:text-2xl">
-          Elevating the Future of Airspace
+          Africa&apos;s Skies. Africa&apos;s Data. Africa&apos;s Future.
         </p>
 
         {/* Subtitle — desktop only */}
         <p className="hero-sub mb-10 hidden text-sm text-[#00F5C4] sm:text-base md:block md:text-lg">
-          Professional Drone Projects &amp; Certified Training Programs
+          AEROVYN deploys intelligent drone technology across Africa — delivering precision, speed, and sovereignty to the industries that power the continent.
         </p>
 
         {/* CTA buttons */}
@@ -2386,13 +2386,13 @@ export function Hero() {
             className="w-full rounded-md bg-[#00F5C4] px-8 py-3.5 text-sm font-semibold text-[#0A0B0D] transition-[transform,box-shadow] duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,245,196,0.4)] sm:w-auto"
             style={{ fontFamily: "var(--font-orbitron)" }}
           >
-            Explore Services →
+            Explore Our Solutions →
           </Link>
           <Link
-            href="/training"
+            href="/contact"
             className="w-full rounded-md border border-[rgba(255,255,255,0.2)] px-8 py-3.5 text-sm font-medium text-white transition-[border-color,color] duration-300 hover:border-[rgba(0,245,196,0.5)] hover:text-[#00F5C4] sm:w-auto"
           >
-            View Training Courses
+            Request a Consultation
           </Link>
         </div>
       </div>
