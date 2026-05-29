@@ -11,21 +11,25 @@ gsap.registerPlugin(ScrollTrigger)
 const values = [
   {
     icon: ShieldCheck,
+    num: '01',
     title: 'Pan-African Reach',
     desc: 'Operating across multiple African countries with culturally aware, locally embedded teams.',
   },
   {
     icon: Cpu,
+    num: '02',
     title: 'Fully Licensed & Certified',
     desc: 'RCAA-certified UAS operator with RDB registration — compliant, credible, and accountable.',
   },
   {
     icon: Briefcase,
+    num: '03',
     title: 'End-to-End Solutions',
     desc: 'From flight to insight — we collect, process, and deliver actionable data, not just raw footage.',
   },
   {
     icon: Users,
+    num: '04',
     title: 'Training & Capacity Building',
     desc: "We don't just fly — we educate. Building Africa's next generation of drone professionals.",
   },
@@ -33,43 +37,13 @@ const values = [
 
 export function WhyAerovyn() {
   const sectionRef = useRef<HTMLElement>(null)
-  const pathRef = useRef<SVGPathElement>(null)
 
   useGSAP((g) => {
-    const path = pathRef.current
-    if (!path) return
-
-    const len = path.getTotalLength()
-    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len })
-
-    g.to(path, {
-      strokeDashoffset: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-        end: 'bottom 30%',
-        scrub: 1,
-      },
-    })
-
-    g.from('.why-node', {
-      opacity: 0,
-      scale: 0,
-      duration: 0.4,
-      stagger: 0.3,
-      ease: 'back.out(2)',
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-      },
-    })
-
     g.from('.why-item', {
       opacity: 0,
-      x: 30,
-      duration: 0.6,
-      stagger: 0.2,
+      x: 40,
+      duration: 0.7,
+      stagger: 0.18,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -80,9 +54,10 @@ export function WhyAerovyn() {
 
   return (
     <section ref={sectionRef} className="px-4 py-16 sm:px-6 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="mb-16 text-center">
+      <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:gap-20 lg:items-center">
+
+        {/* Left — header (sticky on desktop) */}
+        <div className="mb-14 lg:mb-0 lg:sticky lg:top-32">
           <p
             className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]"
             style={{ fontFamily: 'var(--font-orbitron)' }}
@@ -90,72 +65,71 @@ export function WhyAerovyn() {
             Why Choose Us
           </p>
           <h2
-            className="text-[clamp(1.8rem,4vw,3rem)] font-black text-white"
+            className="mb-6 text-[clamp(1.8rem,4vw,3rem)] font-black text-white"
             style={{ fontFamily: 'var(--font-orbitron)' }}
           >
             THE AEROVYN ADVANTAGE
           </h2>
+          <p className="text-sm leading-relaxed text-[#6B7A8D] max-w-sm">
+            Four pillars that set AEROVYN apart — from the first briefing to the final deliverable.
+          </p>
         </div>
 
-        {/* Path + items layout */}
-        <div className="relative">
-          {/* Animated SVG vertical line (desktop only) */}
-          <div className="pointer-events-none absolute left-[27px] top-0 hidden h-full lg:block" style={{ width: 2 }}>
-            <svg width="2" height="100%" viewBox="0 0 2 500" preserveAspectRatio="none" className="h-full w-full">
-              <path
-                ref={pathRef}
-                d="M1 0 L1 500"
-                stroke="#00F5C4"
-                strokeWidth="2"
-                fill="none"
-                strokeOpacity="0.5"
-              />
-            </svg>
-          </div>
+        {/* Right — stacked items with inline connector */}
+        <div>
+          {values.map(({ icon: Icon, num, title, desc }, i) => (
+            <div key={title} className="why-item flex gap-6 items-stretch">
 
-          <div className="flex flex-col gap-12">
-            {values.map(({ icon: Icon, title, desc }, i) => (
-              <div
-                key={title}
-                className="why-item flex items-start gap-5 border-l-2 border-[rgba(0,245,196,0.2)] pl-5 lg:gap-8 lg:border-none lg:pl-0"
-              >
-                {/* Node dot + icon */}
-                <div className="why-node relative shrink-0">
-                  <div
-                    className="flex h-14 w-14 items-center justify-center rounded-xl"
+              {/* Left col: icon box + connector line */}
+              <div className="flex shrink-0 flex-col items-center">
+                <div
+                  className="relative flex h-14 w-14 items-center justify-center rounded-2xl"
+                  style={{
+                    background: 'rgba(0,245,196,0.07)',
+                    border: '1px solid rgba(0,245,196,0.25)',
+                  }}
+                >
+                  <Icon size={22} className="text-[#00F5C4]" />
+                  {/* Number badge top-right */}
+                  <span
+                    className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-black"
                     style={{
-                      background: 'rgba(0,245,196,0.08)',
-                      border: '1px solid rgba(0,245,196,0.3)',
-                      zIndex: 1,
-                      position: 'relative',
+                      background: '#0a0b0d',
+                      border: '1px solid rgba(0,245,196,0.35)',
+                      color: '#00F5C4',
+                      fontFamily: 'var(--font-orbitron)',
                     }}
                   >
-                    <Icon size={22} className="text-[#00F5C4]" />
-                  </div>
+                    {num}
+                  </span>
                 </div>
-
-                {/* Content */}
-                <div className="pt-2">
-                  <div className="mb-1 flex items-center gap-3">
-                    <span
-                      className="text-xs font-semibold tracking-widest text-[#00F5C4] opacity-60"
-                      style={{ fontFamily: 'var(--font-orbitron)' }}
-                    >
-                      0{i + 1}
-                    </span>
-                    <h3
-                      className="text-lg font-bold text-white"
-                      style={{ fontFamily: 'var(--font-orbitron)' }}
-                    >
-                      {title}
-                    </h3>
-                  </div>
-                  <p className="max-w-lg text-sm leading-relaxed text-[#6B7A8D]">{desc}</p>
-                </div>
+                {/* Connector — only between items, not after last */}
+                {i < values.length - 1 && (
+                  <div
+                    className="w-px flex-1 my-1"
+                    style={{
+                      background: 'linear-gradient(to bottom, rgba(0,245,196,0.3) 0%, rgba(0,245,196,0.05) 100%)',
+                      minHeight: '40px',
+                    }}
+                  />
+                )}
               </div>
-            ))}
-          </div>
+
+              {/* Right col: text */}
+              <div className={`flex-grow ${i < values.length - 1 ? 'pb-10' : ''} pt-1`}>
+                <h3
+                  className="mb-2 text-lg font-bold text-white leading-snug"
+                  style={{ fontFamily: 'var(--font-orbitron)' }}
+                >
+                  {title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[#6B7A8D]">{desc}</p>
+              </div>
+
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   )

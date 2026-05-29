@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { PartnersSlider } from '@/components/home/PartnersSlider'
 
 const team = [
   {
@@ -137,23 +138,33 @@ export default function AboutPage() {
           <h2 className="mb-12 text-2xl font-black tracking-wide text-white sm:text-3xl sm:mb-14" style={{ fontFamily: 'var(--font-orbitron)' }}>
             OUR JOURNEY
           </h2>
-          <div className="relative">
-            {/* Vertical line — only show when circle icons align (sm+) */}
-            <div className="absolute bottom-0 top-0 w-px hidden sm:block" style={{ left: '31px', background: 'linear-gradient(to bottom, rgba(0,245,196,0.4), rgba(0,245,196,0.05))' }} />
-            <div className="space-y-8">
-              {timeline.map(({ year, event }) => (
-                <div key={year} className="flex gap-6 items-start">
-                  <div className="shrink-0 flex flex-col items-center sm:items-center">
-                    <div className="w-[62px] h-[62px] rounded-full flex items-center justify-center text-xs font-black border-2 bg-[#0a0b0d] z-10" style={{ borderColor: 'rgba(0,245,196,0.4)', color: '#00F5C4', fontFamily: 'var(--font-orbitron)' }}>
-                      {year}
-                    </div>
+          <div className="space-y-0">
+            {timeline.map(({ year, event }, i) => (
+              <div key={i} className="flex gap-6 items-stretch">
+                {/* Left column: circle + connector line */}
+                <div className="flex shrink-0 flex-col items-center" style={{ width: '64px' }}>
+                  <div
+                    className="flex h-16 w-16 items-center justify-center rounded-full border-2 bg-[#0a0b0d] text-xs font-black"
+                    style={{ borderColor: 'rgba(0,245,196,0.5)', color: '#00F5C4', fontFamily: 'var(--font-orbitron)', flexShrink: 0 }}
+                  >
+                    {year}
                   </div>
-                  <div className="flex-grow pt-4">
+                  {i < timeline.length - 1 && (
+                    <div className="w-px flex-1" style={{ background: 'linear-gradient(to bottom, rgba(0,245,196,0.35) 0%, rgba(0,245,196,0.08) 100%)', minHeight: '32px' }} />
+                  )}
+                </div>
+
+                {/* Right column: event text */}
+                <div className={`flex-grow py-4 ${i < timeline.length - 1 ? 'pb-8' : ''}`}>
+                  <div
+                    className="rounded-xl p-5"
+                    style={{ background: 'rgba(0,245,196,0.03)', border: '1px solid rgba(0,245,196,0.08)' }}
+                  >
                     <p className="text-sm text-[#C4CDD8] leading-relaxed">{event}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -189,39 +200,7 @@ export default function AboutPage() {
       </section>
 
       {/* Strategic Partners */}
-      <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20" style={{ background: 'var(--bg-surface)' }}>
-        <div className="mx-auto max-w-7xl">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.3em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
-            Our Ecosystem
-          </p>
-          <h2 className="mb-4 text-2xl font-black tracking-wide text-white sm:text-3xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
-            STRATEGIC PARTNERS
-          </h2>
-          <p className="mb-10 max-w-2xl text-sm text-[#6B7A8D] leading-relaxed sm:mb-12">
-            Our work is strengthened by a network of government institutions, development agencies, and academic partners — positioning AEROVYN at the heart of Africa&apos;s drone-powered digital future.
-          </p>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {[
-              'Ministry of ICT and Innovation (MINICT)',
-              'Luxembourg Development Agency (LuxDev)',
-              'GIZ — Deutsche Gesellschaft für Internationale Zusammenarbeit',
-              'University of Rwanda (UR)',
-              'The City of Kigali',
-              'Rwanda Space Agency (RSA)',
-              'National Land Authority (NLA)',
-              'Ministry of Local Government (MINALOC)',
-            ].map((partner) => (
-              <div
-                key={partner}
-                className="rounded-xl p-4 text-center"
-                style={{ background: 'rgba(0,245,196,0.04)', border: '1px solid rgba(0,245,196,0.12)' }}
-              >
-                <p className="text-xs font-medium text-[#C4CDD8] leading-snug">{partner}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartnersSlider />
 
       {/* Where We Operate */}
       <section className="px-4 py-14 sm:px-6 sm:py-16 lg:py-20">

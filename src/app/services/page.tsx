@@ -75,14 +75,12 @@ const pricing = [
   {
     tier: 'Standard',
     desc: 'Single-day missions, straightforward scope.',
-    price: 'From $350',
     accent: '#00F5C4',
     items: ['Up to 8 hours on-site', '1 certified pilot', 'Basic processing included', 'Report within 5 days'],
   },
   {
     tier: 'Professional',
     desc: 'Multi-day or technically complex operations.',
-    price: 'From $950',
     accent: '#4D7CF5',
     featured: true,
     items: ['Multi-day scheduling', '2-pilot crew', 'Advanced processing & QC', 'Priority 48h turnaround', 'CAA permit filing'],
@@ -90,7 +88,6 @@ const pricing = [
   {
     tier: 'Enterprise',
     desc: 'Long-term contracts and national-scale programmes.',
-    price: 'Custom',
     accent: '#F5C400',
     items: ['Dedicated flight crew', 'SLA-backed delivery', 'Monthly reporting suite', 'Compliance management', 'Training included'],
   },
@@ -216,7 +213,7 @@ export default function ServicesPage() {
           </h2>
           <p className="mb-10 max-w-xl text-sm text-[#6B7A8D] sm:text-base sm:mb-12">Every project is scoped individually. These tiers give a starting point — contact us for an accurate quote.</p>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {pricing.map(({ tier, desc, price, accent, featured, items }) => (
+            {pricing.map(({ tier, desc, accent, featured, items }) => (
               <div
                 key={tier}
                 className="flex flex-col rounded-2xl p-5 sm:p-7 md:p-8"
@@ -232,7 +229,6 @@ export default function ServicesPage() {
                 )}
                 <h3 className="text-lg font-black text-white tracking-wider mb-1" style={{ fontFamily: 'var(--font-orbitron)' }}>{tier}</h3>
                 <p className="text-xs text-[#6B7A8D] mb-5">{desc}</p>
-                <p className="text-3xl font-black mb-6" style={{ color: accent, fontFamily: 'var(--font-orbitron)' }}>{price}</p>
                 <ul className="space-y-3 mb-8 flex-grow">
                   {items.map(item => (
                     <li key={item} className="flex items-center gap-2.5 text-sm text-[#C4CDD8]">

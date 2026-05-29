@@ -1,8 +1,10 @@
 'use client'
 
 import { useState, useCallback, useRef } from 'react'
+import Image from 'next/image'
 import { projects } from '@/data/projects'
 import { PortfolioCard } from '@/components/portfolio/PortfolioCard'
+import { Search } from 'lucide-react'
 
 type Category = 'All' | 'Mapping' | 'Photography' | 'Agriculture' | 'Industrial' | 'Events'
 const CATEGORIES: Category[] = ['All', 'Mapping', 'Photography', 'Agriculture', 'Industrial', 'Events']
@@ -31,105 +33,132 @@ export default function ProjectsPage() {
     )
   })
 
-  // CSS animation instead of GSAP from() — immune to React StrictMode
-  // double-invoke that leaves opacity:0 inline style permanently stuck
+  const featuredProject = projects[0]
 
   return (
     <div className="min-h-screen" style={{ background: 'var(--bg-base)' }}>
-      {/* Hero bar */}
-      <div className="grid-bg px-4 pb-10 pt-20 sm:px-6 sm:pb-14 sm:pt-24 md:pb-14 md:pt-28">
-        <div className="mx-auto max-w-6xl">
-          <p
-            className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]"
-            style={{ fontFamily: 'var(--font-orbitron)' }}
-          >
+
+      {/* ── Hero ── */}
+      <div className="relative overflow-hidden pt-20 pb-16 sm:pt-28 sm:pb-20">
+        {/* Background photo from first project */}
+        {featuredProject.image && (
+          <Image
+            src={featuredProject.image}
+            alt="Projects"
+            fill
+            className="object-cover"
+            style={{ opacity: 0.12 }}
+            sizes="100vw"
+            priority
+          />
+        )}
+        <div className="absolute inset-0 grid-bg opacity-20" />
+        <div className="absolute inset-x-0 bottom-0 h-28" style={{ background: 'linear-gradient(to top, var(--bg-base), transparent)' }} />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-[#00F5C4]" style={{ fontFamily: 'var(--font-orbitron)' }}>
             Our Work
           </p>
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <h1
-              className="text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl"
-              style={{ fontFamily: 'var(--font-orbitron)' }}
-            >
-              PROJECTS
-            </h1>
-            {/* Search */}
-            <div className="relative w-full max-w-xs sm:max-w-sm">
-              <svg
-                aria-hidden="true"
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B7A8D]"
-                width="16"
-                height="16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              <label htmlFor="projects-search" className="sr-only">Search projects</label>
-              <input
-                id="projects-search"
-                type="search"
-                placeholder="Search projects…"
-                value={query}
-                onChange={(e) => handleSearch(e.target.value)}
-                className="w-full rounded-lg border border-[rgba(255,255,255,0.1)] bg-[#111318] pl-9 pr-4 py-2.5 text-sm text-white placeholder-[#6B7A8D] focus:border-[rgba(0,245,196,0.4)] focus:outline-none transition-colors"
-              />
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h1 className="text-4xl font-black tracking-widest text-white sm:text-5xl md:text-7xl" style={{ fontFamily: 'var(--font-orbitron)' }}>
+                PROJECTS
+              </h1>
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#5A6A7E] sm:text-base">
+                Real deployments, real outcomes — from infrastructure surveys across Rwanda to precision agriculture and urban photography.
+              </p>
+            </div>
+
+            {/* Stats strip */}
+            <div className="flex gap-6 shrink-0">
+              {[
+                { val: `${projects.length}+`, label: 'Projects' },
+                { val: '5', label: 'Categories' },
+                { val: '10+', label: 'Countries' },
+              ].map(({ val, label }) => (
+                <div key={label} className="text-center">
+                  <p className="text-2xl font-black text-white" style={{ fontFamily: 'var(--font-orbitron)' }}>{val}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-[#3D4A58]" style={{ fontFamily: 'var(--font-orbitron)' }}>{label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Filter tabs */}
-      <div className="sticky top-16 z-20 border-b border-[rgba(255,255,255,0.06)] bg-[rgba(10,11,13,0.9)] px-4 backdrop-blur-xl sm:px-6">
-        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto py-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              aria-pressed={activeCategory === cat}
-              className="shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider transition-all duration-200"
-              style={
-                activeCategory === cat
-                  ? {
-                      background: 'rgba(0,245,196,0.12)',
-                      border: '1px solid rgba(0,245,196,0.4)',
-                      color: '#00F5C4',
-                      fontFamily: 'var(--font-orbitron)',
-                    }
-                  : {
-                      background: 'transparent',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                      color: '#6B7A8D',
-                      fontFamily: 'var(--font-orbitron)',
-                    }
-              }
-            >
-              {cat}
-            </button>
-          ))}
+      {/* ── Filter + Search bar ── */}
+      <div className="sticky top-16 z-20 border-b border-[rgba(255,255,255,0.06)] bg-[rgba(10,11,13,0.92)] backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center gap-3 overflow-x-auto px-4 py-3 sm:px-6 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {/* Categories */}
+          <div className="flex shrink-0 gap-1.5">
+            {CATEGORIES.map((cat) => {
+              const count = cat === 'All' ? projects.length : projects.filter((p) => p.category === cat).length
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  aria-pressed={activeCategory === cat}
+                  className="shrink-0 rounded-full px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all duration-200"
+                  style={
+                    activeCategory === cat
+                      ? { background: 'rgba(0,245,196,0.12)', border: '1px solid rgba(0,245,196,0.4)', color: '#00F5C4', fontFamily: 'var(--font-orbitron)' }
+                      : { background: 'transparent', border: '1px solid rgba(255,255,255,0.08)', color: '#5A6A7E', fontFamily: 'var(--font-orbitron)' }
+                  }
+                >
+                  {cat} <span className="ml-1 opacity-50">{count}</span>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Divider */}
+          <div className="h-5 w-px shrink-0 bg-[rgba(255,255,255,0.08)]" />
+
+          {/* Search */}
+          <div className="relative min-w-[180px] max-w-xs flex-1">
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#3D4A58]" />
+            <label htmlFor="projects-search" className="sr-only">Search projects</label>
+            <input
+              id="projects-search"
+              type="search"
+              placeholder="Search…"
+              value={query}
+              onChange={(e) => handleSearch(e.target.value)}
+              className="w-full rounded-full border bg-transparent py-1.5 pl-8 pr-4 text-xs text-white placeholder-[#3D4A58] focus:outline-none transition-colors"
+              style={{ borderColor: 'rgba(255,255,255,0.1)', caretColor: '#00F5C4' }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(0,245,196,0.35)' }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)' }}
+            />
+          </div>
         </div>
       </div>
 
-      {/* Masonry grid */}
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      {/* ── Grid ── */}
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-14">
         {filtered.length === 0 ? (
           <div className="py-24 text-center">
-            <p className="text-[#6B7A8D] text-lg">No projects match your search.</p>
+            <p className="text-[#5A6A7E] text-base">No projects match your search.</p>
+            <button
+              onClick={() => { setActiveCategory('All'); setQuery(''); setDebouncedQuery('') }}
+              className="mt-4 text-sm text-[#00F5C4] hover:underline"
+            >
+              Clear filters
+            </button>
           </div>
         ) : (
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6">
+          <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
             {filtered.map((project, i) => (
               <div
                 key={project.slug}
-                style={{ animation: `card-enter 0.5s ease-out ${i * 80}ms both` }}
+                style={{ animation: `card-enter 0.5s ease-out ${i * 70}ms both` }}
               >
-                <PortfolioCard project={project} tall={i % 3 === 1} />
+                <PortfolioCard project={project} tall={i % 3 === 1} index={i} />
               </div>
             ))}
           </div>
         )}
       </div>
+
     </div>
   )
 }

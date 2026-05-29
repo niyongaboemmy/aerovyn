@@ -408,3 +408,15 @@ a, button, [role="button"] {
     from {} to {}
   }
 }
+
+/* ─── Partners infinite marquee (tripled array → -33.33%) ─────────────────── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.3333%); }
+}
+@keyframes marquee-right {
+  from { transform: translateX(-33.3333%); }
+  to   { transform: translateX(0); }
+}
+.animate-marquee-left  { animation: marquee-left  36s linear infinite; }
+.animate-marquee-right { animation: marquee-right 40s linear infinite; }

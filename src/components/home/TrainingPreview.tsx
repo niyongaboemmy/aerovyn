@@ -2,57 +2,16 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
-import { CheckCircle2, Clock, Award } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@/hooks/useGSAP'
+import { courses } from '@/data/courses'
+import { CourseCard } from '@/components/training/CourseCard'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const courses = [
-  {
-    level: 'BEGINNER',
-    levelColor: '#00D68F',
-    title: 'Drone Fundamentals & Safety Certification',
-    duration: '3 Days Intensive',
-    features: [
-      'Hands-on Flight Training',
-      'Safety & Regulatory Briefing',
-      'Certificate Issued',
-      'No prior experience required',
-    ],
-    prereq: 'None',
-    price: '$299',
-  },
-  {
-    level: 'INTERMEDIATE',
-    levelColor: '#FFB800',
-    title: 'Advanced Piloting & Aerial Operations',
-    duration: '5 Days',
-    features: [
-      'Night Flying Techniques',
-      'Commercial License Pathway',
-      'Mapping & Survey Methods',
-      'Basic drone maintenance',
-    ],
-    prereq: 'Beginner Course',
-    price: '$549',
-  },
-  {
-    level: 'ADVANCED',
-    levelColor: '#00F5C4',
-    title: 'Professional UAV Pilot Certification',
-    duration: '2 Weeks',
-    features: [
-      'Regulatory Compliance (RURA)',
-      'Industrial & Precision Ops',
-      'Career Support & Networking',
-      'Enterprise project exposure',
-    ],
-    prereq: 'Intermediate Course',
-    price: '$999',
-  },
-]
+// Show only the 3 main levels on the homepage (not Corporate)
+const previewCourses = courses.filter((c) => c.level !== 'CORPORATE')
 
 export function TrainingPreview() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -95,85 +54,9 @@ export function TrainingPreview() {
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {courses.map((course) => (
-            <div
-              key={course.level}
-              className="course-card flex flex-col rounded-2xl p-5 transition-transform duration-300 hover:-translate-y-1 md:p-7"
-              style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: `1px solid ${course.levelColor}25`,
-                backdropFilter: 'blur(12px)',
-              }}
-            >
-              {/* Badge + duration */}
-              <div className="mb-5 flex items-center justify-between">
-                <span
-                  className="rounded px-3 py-1 text-[10px] font-bold tracking-[0.15em]"
-                  style={{
-                    background: `${course.levelColor}15`,
-                    color: course.levelColor,
-                    border: `1px solid ${course.levelColor}30`,
-                    fontFamily: 'var(--font-orbitron)',
-                  }}
-                >
-                  {course.level}
-                </span>
-                <span className="flex items-center gap-1.5 text-xs text-[#6B7A8D]">
-                  <Clock size={12} />
-                  {course.duration}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h3 className="mb-4 text-base font-semibold leading-snug text-white">
-                {course.title}
-              </h3>
-
-              {/* Separator */}
-              <div
-                className="mb-5 h-px w-full"
-                style={{ background: `${course.levelColor}20` }}
-              />
-
-              {/* Features */}
-              <ul className="mb-6 flex flex-col gap-2.5">
-                {course.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-[#8A9BAE]">
-                    <CheckCircle2 size={14} className="mt-0.5 shrink-0" style={{ color: course.levelColor }} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Prerequisites */}
-              <p className="mb-6 text-xs text-[#6B7A8D]">
-                <span className="text-[#8A9BAE]">Prerequisites:</span> {course.prereq}
-              </p>
-
-              {/* CTA */}
-              <div className="mt-auto">
-                <Link
-                  href="/training"
-                  className="flex w-full items-center justify-between rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300"
-                  style={{
-                    background: `${course.levelColor}12`,
-                    border: `1px solid ${course.levelColor}30`,
-                    color: course.levelColor,
-                  }}
-                  onMouseEnter={(e) => {
-                    ;(e.currentTarget as HTMLAnchorElement).style.background = `${course.levelColor}20`
-                  }}
-                  onMouseLeave={(e) => {
-                    ;(e.currentTarget as HTMLAnchorElement).style.background = `${course.levelColor}12`
-                  }}
-                >
-                  <span className="flex items-center gap-2">
-                    <Award size={15} />
-                    Enroll Now
-                  </span>
-                  <span>{course.price}</span>
-                </Link>
-              </div>
+          {previewCourses.map((course) => (
+            <div key={course.level} className="course-card">
+              <CourseCard course={course} />
             </div>
           ))}
         </div>

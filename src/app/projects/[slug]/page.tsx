@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import { projects, getProjectBySlug, getRelatedProjects } from '@/data/projects'
 import { PortfolioCard } from '@/components/portfolio/PortfolioCard'
@@ -32,6 +33,18 @@ export default async function ProjectDetailPage({ params }: Props) {
         className="relative pt-24 pb-16 px-6 overflow-hidden"
         style={{ background: project.gradient }}
       >
+        {/* Project image as hero background */}
+        {project.image && (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+            style={{ opacity: 0.25 }}
+            sizes="100vw"
+            priority
+          />
+        )}
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative mx-auto max-w-6xl">
           {/* Breadcrumb */}
