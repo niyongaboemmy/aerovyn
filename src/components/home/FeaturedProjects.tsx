@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useLayoutEffect } from 'react'
+import Image from 'next/image'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowUpRight } from 'lucide-react'
@@ -14,6 +15,7 @@ const projects = [
     tags: ['#MAPPING', '#INFRASTRUCTURE'],
     gradient: 'linear-gradient(135deg, #0d2b1a 0%, #051510 40%, #00f5c410 100%)',
     accent: '#00F5C4',
+    image: '/images/projects/mapping-infrastructure.jpg',
   },
   {
     title: 'Agricultural Survey',
@@ -21,6 +23,7 @@ const projects = [
     tags: ['#AGRICULTURE', '#UAV'],
     gradient: 'linear-gradient(135deg, #1a1a0d 0%, #110f05 40%, #f5c40010 100%)',
     accent: '#F5C400',
+    image: '/images/projects/agriculture-drone.jpg',
   },
   {
     title: 'Urban Photography',
@@ -28,6 +31,7 @@ const projects = [
     tags: ['#PHOTOGRAPHY', '#URBAN'],
     gradient: 'linear-gradient(135deg, #0d1120 0%, #050a18 40%, #4d7cf510 100%)',
     accent: '#4D7CF5',
+    image: '/images/projects/kigali-aerial.jpg',
   },
 ]
 
@@ -126,12 +130,23 @@ function ProjectCard({
   tags,
   gradient,
   accent,
+  image,
 }: (typeof projects)[number]) {
   return (
     <div
       className="group relative flex h-72 w-full flex-shrink-0 cursor-pointer flex-col justify-end overflow-hidden rounded-2xl p-7 lg:h-80 lg:w-[480px]"
       style={{ background: gradient, border: '1px solid rgba(255,255,255,0.06)' }}
     >
+      {/* Photo layer */}
+      {image && (
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover opacity-45 transition-opacity duration-500 group-hover:opacity-35"
+          sizes="(max-width: 1024px) 100vw, 480px"
+        />
+      )}
       {/* Corner arrow */}
       <div
         className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"

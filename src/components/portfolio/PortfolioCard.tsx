@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Project } from '@/data/projects'
 
@@ -7,6 +8,16 @@ export function PortfolioCard({ project, tall = false }: Props) {
   return (
     <div className="break-inside-avoid mb-6">
       <Link href={`/projects/${project.slug}`} className="group block relative overflow-hidden rounded-xl" style={{ background: project.gradient }}>
+        {/* Photo overlay */}
+        {project.image && (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover opacity-50 transition-opacity duration-500 group-hover:opacity-40"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        )}
         {/* Variable height spacer */}
         <div style={{ paddingBottom: tall ? '90%' : '65%' }} />
 

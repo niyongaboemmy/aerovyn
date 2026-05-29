@@ -7,6 +7,7 @@ export type Post = {
   tags: string[]
   readTime: string
   publishedAt: string
+  image?: string
   author: { name: string; role: string; initials: string }
 }
 
@@ -19,6 +20,7 @@ export const posts: Post[] = [
     tags: ['Regulations', 'Africa', 'Compliance', 'CAA'],
     readTime: '6 min read',
     publishedAt: '2026-05-10',
+    image: '/images/blog/drone-regulations.jpg',
     author: { name: 'Jean Claude Tuyisenge', role: 'Founder & Managing Director', initials: 'JT' },
     body: [
       'The regulatory landscape for drone operations in East Africa has evolved significantly over the past 18 months. Rwanda, Kenya, Uganda, and Tanzania have all published updated civil aviation authority frameworks that affect how commercial UAV operators plan and execute missions.',
@@ -36,6 +38,7 @@ export const posts: Post[] = [
     tags: ['Agriculture', 'NDVI', 'Precision Farming', 'Technology'],
     readTime: '8 min read',
     publishedAt: '2026-04-22',
+    image: '/images/blog/ndvi-agriculture.jpg',
     author: { name: 'Pierre Gatama', role: 'Co-Founder & Director', initials: 'PG' },
     body: [
       'NDVI — the Normalised Difference Vegetation Index — has been used in satellite remote sensing since the 1970s. What has changed in the last three years is the democratisation of the technology: multispectral sensors that once cost $50,000 now ship as purpose-built drones for under $8,000, and the processing software has become fast enough to deliver field-level insights within hours of a flight.',
@@ -53,6 +56,7 @@ export const posts: Post[] = [
     tags: ['Photography', 'Equipment', 'DJI', 'Cameras'],
     readTime: '7 min read',
     publishedAt: '2026-04-05',
+    image: '/images/blog/aerial-photography.jpg',
     author: { name: 'Jean Claude Tuyisenge', role: 'Founder & Managing Director', initials: 'JT' },
     body: [
       'The aerial photography market has matured to the point where even entry-level consumer drones can produce imagery that would have required a helicopter 10 years ago. But for professional commercial work — real estate, broadcast, events, and architectural documentation — the difference between a consumer and professional platform is significant.',
@@ -70,6 +74,7 @@ export const posts: Post[] = [
     tags: ['Training', 'Certification', 'Rwanda', 'RCAA'],
     readTime: '10 min read',
     publishedAt: '2026-03-18',
+    image: '/images/blog/pilot-training.jpg',
     author: { name: 'Jean Claude Tuyisenge', role: 'Founder & Managing Director', initials: 'JT' },
     body: [
       'Rwanda has one of the most streamlined UAV pilot certification processes in Africa, and the Rwanda Civil Aviation Authority has made significant investments in making the pathway accessible to both local and international applicants. This guide covers the complete process as of Q1 2026.',
@@ -87,6 +92,7 @@ export const posts: Post[] = [
     tags: ['BVLOS', 'Industry', 'Logistics', 'Future'],
     readTime: '9 min read',
     publishedAt: '2026-02-28',
+    image: '/images/blog/bvlos-operations.jpg',
     author: { name: 'Pierre Gatama', role: 'Co-Founder & Director', initials: 'PG' },
     body: [
       'In April 2019, Zipline launched the world\'s first national-scale drone delivery network from its distribution hub in Muhanga, Rwanda — delivering blood and medical supplies to rural hospitals across the country. That operation, which is now delivering hundreds of packages per day across multiple countries, is the world\'s most advanced proof point for Beyond Visual Line of Sight (BVLOS) commercial drone operations.',

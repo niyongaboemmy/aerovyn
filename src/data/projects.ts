@@ -7,6 +7,7 @@ export type Project = {
   description: string
   gradient: string
   accent: string
+  image?: string
   client: string
   location: string
   duration: string
@@ -25,6 +26,7 @@ export const projects: Project[] = [
     description: 'AEROVYN deployed a fleet of fixed-wing and multirotor UAVs to conduct a comprehensive aerial survey of a 120km road and utility corridor across three provinces. Using photogrammetry and LiDAR fusion, we produced 2cm GSD orthomosaics, 3D point clouds, and elevation models delivered within 10 business days — a task that would have taken ground teams over three months.\n\nThe dataset enabled engineers to identify drainage issues, plan utility routing, and produce accurate cost estimates before a single metre of ground was broken.',
     gradient: 'linear-gradient(135deg, #0d2b1a 0%, #051510 50%, #00f5c410 100%)',
     accent: '#00F5C4',
+    image: '/images/projects/mapping-infrastructure.jpg',
     client: 'Rwanda Infrastructure Authority',
     location: 'Kigali–Musanze Corridor, Rwanda',
     duration: '8 Days',
@@ -45,6 +47,7 @@ export const projects: Project[] = [
     description: 'Working with a cooperative of over 800 smallholder farmers in Bugesera District, AEROVYN conducted a multispectral NDVI survey across 2,400 hectares using DJI Agras T40 and Phantom 4 Multispectral drones. The resulting vegetation health maps allowed agronomists to pinpoint irrigation-deficient zones with sub-metre accuracy.\n\nFarmers received field-level PDF reports and georeferenced prescription maps compatible with variable-rate irrigation controllers. Crop yield estimates improved by 18% in the following season based on cooperative records.',
     gradient: 'linear-gradient(135deg, #1a1a0d 0%, #110f05 50%, #f5c40010 100%)',
     accent: '#F5C400',
+    image: '/images/projects/agriculture-drone.jpg',
     client: 'Bugesera Farmers Cooperative',
     location: 'Bugesera District, Rwanda',
     duration: '5 Days',
@@ -65,6 +68,7 @@ export const projects: Project[] = [
     description: 'AEROVYN was commissioned by a leading Kigali property developer to produce a full cinematic aerial photography and video series for their flagship mixed-use development. Operating under a CAA special flight authorisation, our crew conducted 12 flight missions over 4 days to capture golden-hour stills, twilight long-exposures, and 4K video flyovers from multiple altitudes.\n\nThe final deliverable included 200+ edited stills, a 3-minute hero video, and 15 social-media-ready vertical clips — all colour-graded to a consistent cinematic look.',
     gradient: 'linear-gradient(135deg, #0d1120 0%, #050a18 50%, #4d7cf510 100%)',
     accent: '#4D7CF5',
+    image: '/images/projects/kigali-aerial.jpg',
     client: 'Kigali Heights Development Ltd.',
     location: 'Kigali City Centre, Rwanda',
     duration: '4 Days',
@@ -80,6 +84,7 @@ export const projects: Project[] = [
     description: 'AEROVYN executed a nationwide inspection programme for a major telecom operator, deploying close-proximity inspection drones to assess the structural integrity of 47 towers across Rwanda. Traditional rope-access inspections are slow, expensive, and hazardous. Our drone solution captured 4K close-up imagery of all structural joints, corrosion points, and antenna mounts without a single worker at height.\n\nDefect reports with GPS-tagged imagery were delivered within 24 hours of each tower inspection, enabling the client to prioritise maintenance budget and schedule remediation works.',
     gradient: 'linear-gradient(135deg, #1a0d0d 0%, #150505 50%, #f54d4d10 100%)',
     accent: '#F54D4D',
+    image: '/images/projects/tower-inspection.jpg',
     client: 'Major Telecom Operator (NDA)',
     location: 'Nationwide, Rwanda',
     duration: '3 Weeks',
@@ -95,6 +100,7 @@ export const projects: Project[] = [
     description: 'Commissioned by an environmental research institution, AEROVYN established a recurring quarterly aerial monitoring programme across 85km of Lake Kivu shoreline. Each survey mission produced orthomosaic maps and change-detection analysis comparing current conditions against a historical baseline.\n\nThe data revealed critical erosion hotspots, quantified vegetation loss in riparian zones, and provided actionable intelligence for conservation interventions — all delivered as interactive GIS layers compatible with the client\'s existing monitoring platform.',
     gradient: 'linear-gradient(135deg, #0d1a1a 0%, #051515 50%, #00b8f510 100%)',
     accent: '#00B8F5',
+    image: '/images/projects/lake-kivu-aerial.jpg',
     client: 'Rwanda Environment Management Authority',
     location: 'Lake Kivu, Western Province',
     duration: '6 Months (Quarterly)',
@@ -110,6 +116,7 @@ export const projects: Project[] = [
     description: 'AEROVYN provided end-to-end aerial production support for the Kigali International Marathon, one of East Africa\'s largest running events. Operating a 5-drone crew across the full 42km course, we streamed live aerial footage to the broadcast truck for real-time TV integration while simultaneously capturing 6K RAW footage for the post-race highlight film.\n\nCoordination with the Rwanda Civil Aviation Authority and city traffic authorities was managed entirely by AEROVYN\'s operations team, allowing the event organisers to focus on race-day logistics.',
     gradient: 'linear-gradient(135deg, #1a0d1a 0%, #150515 50%, #c400f510 100%)',
     accent: '#C400F5',
+    image: '/images/projects/marathon-aerial.jpg',
     client: 'Kigali City Events Authority',
     location: 'Kigali, Rwanda',
     duration: '2 Days',

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import type { Post } from '@/data/posts'
 
@@ -21,9 +22,21 @@ export function BlogCard({ post, featured = false }: Props) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block rounded-xl border transition-all duration-300 hover:border-[rgba(0,245,196,0.3)] hover:shadow-[0_0_30px_rgba(0,245,196,0.06)]"
+      className="group block rounded-xl border transition-all duration-300 hover:border-[rgba(0,245,196,0.3)] hover:shadow-[0_0_30px_rgba(0,245,196,0.06)] overflow-hidden"
       style={{ background: '#111318', borderColor: 'rgba(255,255,255,0.07)' }}
     >
+      {/* Cover image */}
+      {post.image && (
+        <div className="relative w-full overflow-hidden" style={{ height: featured ? '220px' : '160px' }}>
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </div>
+      )}
       <div className={`p-6 flex flex-col h-full ${featured ? 'md:p-8' : ''}`}>
         {/* Category badge */}
         <span
